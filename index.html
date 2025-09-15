@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadlaxa's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Get css icons from css.gg -->
+  <link href="resources/sun moon.css" rel="stylesheet">
+
+  <!-- CSS for dark mode toggle button -->
+  <link href="resources/dark-mode-toggle.css" rel="stylesheet">
+
+  <!-- Dark Reader API via jsDelivr CDN-->
+  <script src="resources/darkreader.min.js"></script>
+  <meta name="theme-color" content="#fff4d6" />
+  <link href="resources/icon1.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="resources/icon1.png" rel="apple-touch-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <noscript>
+    <style>
+      body {
+        overflow: auto !important;
+      }
+
+      #main {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+      }
+
+      #main>.inner>section {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+      }
+
+      #main>.inner>section>* {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+      }
+    </style>
+  </noscript>
+</head>
+
+<body>
+  <div class="circle"></div>
+  <!-- Dark mode toggle button -->
+  <div class="dark-mode-toggle">
+    <i class="gg-moon"></i>
+  </div>
+
+  <div class="background-scene">
+    <div class="wave"></div>
+  </div>
+  <div class="window-container main-window">
+    <div class="window-frame">
+      <div class="window-header">
+        <span class="window-title">home</span>
+      </div>
+      <div class="window-content">
+        <div class="intro-section">
+          <h1>hi! i'm <span class="cad-name">cadlaxa</span></h1>
+          <p>student, illustrator, and developer</p>
+        </div>
+        <div class="nav-icons">
+          <div class="icon-item" data-target="about-modal">
+            <img src="https://example.com/path/to/about-icon.png" alt="About">
+            <span>about</span>
+          </div>
+          <div class="icon-item" data-target="links-modal">
+            <img src="https://example.com/path/to/links-icon.png" alt="Links">
+            <span>links</span>
+          </div>
+          <div class="icon-item" data-target="project-modal">
+            <img src="https://example.com/path/to/work-icon.png" alt="Projects">
+            <span>projects</span>
+          </div>
+          <div class="icon-item" data-target="faq-modal">
+            <img src="https://example.com/path/to/faq-icon.png" alt="FAQ">
+            <span>faq</span>
+          </div>
+          <div class="icon-item" data-target="contact-modal">
+            <img src="https://example.com/path/to/contact-icon.png" alt="Contact">
+            <span>contact</span>
+          </div>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><img src="https://example.com/path/to/twitter-icon.png" alt="Github"></a>
+        <a href="#"><img src="https://example.com/path/to/youtube-icon.png" alt="ano"></a>
+        <a href="#"><img src="https://example.com/path/to/instagram-icon.png" alt="idk"></a>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2025 Paolo Cadag</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="window-frame">
+        <div class="window-header handle">
+          <span class="window-title">About</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content scrollable-content">
+          <div class="profile-container">
+            <div class="profile-header">
+              <img src="resources/icon1.png" alt="Paolo Cadag" class="profile-photo">
+              <div class="profile-name">
+                <h1><span class="cad-name">Paolo Cadag</span></h1>
+                <p>aka cadlaxa</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h3>PH-based illustrator and developer, vsynth user/developer</h3>
+            <p>Current developer at <a href="https://www.medgrocer.com/" target="_blank">OPENUTAU</a></p>
+            <h1><span class="cad-name">Hi! I'm Cadlaxa, I...</span></h1>
+            <ul>
+              <li>develop <strong>OPENUTAU Phonemizers</strong>,</li>
+              <li>create <strong>drawings</strong> for fun,</li>
+              <li>create <strong>vocal covers</strong> with my voicebank,</li>
+              <li>love <strong>music</strong> (especially Vocaloid, UTAU, and VSynth),</li>
+              <li>do <strong>front-end</strong> and <strong>back-end</strong> development</li>
+            </ul>
+          </div>
+          <div class="about-info-section">
+            <h1><span class="cad-name">Education</span></h1>
+            <ul>
+              <li>Bachelor of Science in Computer Science</li>
+            </ul>
+          </div>
+          <div class="about-info-section">
+            <h1><span class="cad-name">Other interests</span></h1>
+            <ul>
+              <li>Playing gacha games</li>
+              <li>Watching anime</li>
+              <li>Listening to music</li>
+              <li>Reading Manhwa and Webtoon comics</li>
+            </ul>
+          </div>
+          <div class="about-info-section">
+            <h1><span class="cad-name">Language Proficiency</span></h1>
+            <ul>
+              <li>I have native fluency in <strong>Filipino</strong> and in <strong>English</strong>
+                and can speak both languages</li>
+              <li>I have basic knowledge of <strong>English phonetics</strong> especially in IPA, Xsampa and ARPABET
+              </li>
+              <li>I have basic phonetic knowledge of <strong>Japanese, Tagalog, Korean, Chinese,</strong>and
+                <strong>Spanish</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div id="links-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="window-frame">
+        <div class="window-header handle">
+          <span class="window-title">Links</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content scrollable-content">
+          <div class="profile-container">
+            <div class="profile-header">
+              <div class="profile-name">
+                <h1><span class="cad-name">chunlink...</span></h1>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h3>wip</h3>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="project-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="window-frame">
+        <div class="window-header handle">
+          <span class="window-title">Projects</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content scrollable-content">
+          <div class="profile-container">
+            <div class="profile-header">
+              <div class="profile-name">
+                <h1><span class="cad-name">Current Project of mine</span></h1>
+                <p>located all on my GitHub repository</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="window-content project-grid-container">
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">OPENUTAU</h3>
+              </div>
+              <div class="project-description">
+                <p>Open singing synthesis platform / Open source UTAU successor.</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/stakira/OpenUtau" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">VB: Shizuma Saito</h3>
+              </div>
+              <div class="project-description">
+                <p>English, Japanese, and Filipino UTAU Concatenative voicebank</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://cadlaxa.github.io/Shizuma-Saito-site/" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Voicebank</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">OU Dictionary Editor</h3>
+              </div>
+              <div class="project-description">
+                <p>Python GUI that can read and parse YAML, JSON, Sphinx format and more</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/OpenUtau-Dictionary-Editor" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">OU G2p Tester</h3>
+              </div>
+              <div class="project-description">
+                <p>Python CLI for testing onnx g2p (Grapheme to Phoneme) models</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/OU-Grapheme-to-Phoneme-Tester" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">ARPAsing+ Phonemizers</h3>
+              </div>
+              <div class="project-description">
+                <p>Archive sample of Syllable Based ARPAsing Phonemizer</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/Syllable-Based-ARPAsing-Phonemizer" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">Local Database Manager</h3>
+              </div>
+              <div class="project-description">
+                <p>Java local database manager and data editor that uses CSV files for storing and creating data</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/Local-Database-Manager" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">2048 retro</h3>
+              </div>
+              <div class="project-description">
+                <p>Java command line program (non-gui game) with interactive controls and sfx</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/Java-CL-based-Game" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">ARTI-san</h3>
+              </div>
+              <div class="project-description">
+                <p>Tkinter GUI for a Point-of-Sale anime figurines for school project. Stores customer data in yaml format</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/POS-tkinter-GUI" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">CVSU Alumni Profile</h3>
+              </div>
+              <div class="project-description">
+                <p>School project for creating an Alumni profile website</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://cadlaxa.github.io/CvSU-Alumni-Profile/" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Site</button>
+                </a>
+                <br>
+                <a href="https://github.com/Cadlaxa/CvSU-Alumni-Profile" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Source</button>
+                </a>
+                
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">Lax's Boulangerie et Patisserie</h3>
+              </div>
+              <div class="project-description">
+                <p>Python CLI receipt system, manual/automatic</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/Cash-register" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Source</button>
+                </a>
+                
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">Other Projects</h3>
+              </div>
+              <div class="project-description">
+                <p>My other projects listed here</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa?tab=repositories" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Repo</button>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="window-frame">
+        <div class="window-header handle">
+          <span class="window-title">Frequently Asked Questions</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content scrollable-content">
+          <div class="profile-container">
+            <div class="profile-header">
+              <div class="profile-name">
+                <h1><span class="cad-name">qna</span></h1>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h3>wip</h3>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <!-- CONTACTS -->
+  <div id="contact-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="window-frame">
+        <div class="window-header handle">
+          <span class="window-title">Contact</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content scrollable-content">
+          <div class="profile-container">
+            <div class="profile-header">
+              <div class="profile-name">
+                <h1><span class="cad-name">ring ring</span></h1>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h3>wip</h3>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </script>
+  <script src="script.js"></script>
+  <script src="resources/dark-mode-toggle.js"></script>
+  <script src="resources/clicks.js"></script>
+  </script>
+</body>
+
+</html>
