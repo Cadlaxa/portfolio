@@ -187,7 +187,7 @@ body {
   width: 60px;
   height: 60px;
   margin-bottom: 5px;
-  filter: invert(30%) sepia(50%) saturate(1000%) hue-rotate(338deg) brightness(100%) contrast(100%) drop-shadow(4px 4px 0px #cacaca);
+  filter: invert(30%) sepia(40%) saturate(850%) hue-rotate(338deg) brightness(100%) contrast(100%) drop-shadow(4px 4px 0px #cacaca);
   transition: filter 0.3s ease;
 }
 
