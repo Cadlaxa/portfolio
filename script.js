@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContainers = document.querySelectorAll('.modal-container');
     const toggleModalBtn = document.querySelector('.toggle-modal-btn');
     let highestZIndex = 1000;
-    let activeModal = null; // Variable to store the currently active modal
+    let activeModal = null;
 
     // --- General Setup ---
     function applyFloatAnimation() {
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetModalWindow) {
                     bringToFront(targetModalWindow);
                 }
-                // Show the floating button and set the active modal
                 toggleModalBtn.style.display = 'block';
                 activeModal = targetModalContainer;
             }
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (parentModalContainer) {
                 parentModalContainer.classList.remove('visible');
             }
-            // Hide the floating button
             toggleModalBtn.style.display = 'none';
             activeModal = null;
         });
@@ -62,9 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalWindow = container.querySelector('.modal-window');
         if (modalWindow) {
             modalWindow.addEventListener('transitionend', (e) => {
-                // Check if the closing transition has finished
                 if (e.propertyName === 'transform' && !container.classList.contains('visible')) {
-                    // Reset position and size for next open
                     modalWindow.style.left = '';
                     modalWindow.style.top = '';
                     modalWindow.style.width = '';
@@ -104,12 +100,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let initialX, initialY;
 
     function dragStart(e) {
-        const modalWindow = e.target.closest('.modal-window');
-        if (!modalWindow || !e.target.classList.contains('handle')) return;
+        // This is the key fix. Check if the element is the close button and return early if it is.
+        if (e.target.classList.contains('close-btn')) {
+            return;
+        }
+
+        const handle = e.target.closest('.window-header.handle');
+        if (!handle) return;
 
         e.preventDefault();
 
-        activeDraggable = modalWindow;
+        activeDraggable = handle.closest('.modal-window');
+        if (!activeDraggable) return;
+
         activeDraggable.classList.add('is-dragging');
 
         const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
@@ -218,11 +221,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', resize);
     document.addEventListener('touchmove', resize);
     
-    // Remove icon hover effects for mobile
     if (window.innerWidth <= 768) {
       const allIconItems = document.querySelectorAll('.icon-item');
       allIconItems.forEach(item => {
         item.style.transform = 'none';
       });
+    }
+
+    // Function to handle the FAQ dropdown
+    function setupFaqDropdown() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const faqAnswer = faqItem.querySelector('.faq-answer');
+
+                faqItem.classList.toggle('open');
+            });
+        });
+    }
+
+    setupFaqDropdown();
+
+
+    const faqIcon = document.getElementById('faq-icon');
+    const faqModal = document.getElementById('faq-modal');
+
+    if (faqIcon && faqModal) {
+        faqIcon.addEventListener('click', () => {
+            faqModal.classList.add('visible');
+        });
+
+        faqModal.querySelector('.close-btn').addEventListener('click', () => {
+            faqModal.classList.remove('visible');
+        });
+
+        faqModal.addEventListener('click', (e) => {
+            if (e.target === faqModal) {
+                faqModal.classList.remove('visible');
+            }
+        });
     }
 });
