@@ -8,7 +8,7 @@
 
 :root {
   --orange: #ffa600;
-  --orangeL: #ffbd44;
+  --orangeL: #ffdb65;
   --orangeHL: #ffeed0;
   --orangeD: #fa8b4b;
   --p: #4b4b4b;
@@ -162,7 +162,7 @@ body {
 .nav-icons {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -171,28 +171,33 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  background-color: var(--orangeHL);
 }
 
 .icon-item:hover {
   transform: translateY(-5px);
+  background-color: var(--orangeL);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 .icon-item img {
   width: 60px;
   height: 60px;
   margin-bottom: 5px;
-  filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(100%) contrast(100%);
+  filter: invert(30%) sepia(50%) saturate(1000%) hue-rotate(338deg) brightness(100%) contrast(100%) drop-shadow(4px 4px 0px #cacaca);
   transition: filter 0.3s ease;
 }
 
 .icon-item:hover img {
-  filter: invert(35%) sepia(61%) saturate(2250%) hue-rotate(338deg) brightness(101%) contrast(97%);
+  filter: invert(30%) sepia(61%) saturate(2250%) hue-rotate(338deg) brightness(140%) contrast(97%);
 }
 
 .icon-item span {
-  font-weight: 500;
-  color: var(--p);
+  font-weight: 600;
+  color: var(--dark-gray);
 }
 
 /* Social Links */
@@ -209,7 +214,7 @@ body {
   width: 30px;
   height: 30px;
   margin: 0 10px;
-  filter: grayscale(100%);
+
   transition: filter 0.3s ease;
 }
 
@@ -457,19 +462,16 @@ body {
 .project-grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 3 columns of equal width */
   gap: 20px;
-  /* Space between grid items */
   padding: 20px;
   text-align: center;
-  /* Center content within the grid items */
 }
 
 .project-item {
   background-color: #fff;
   border-radius: var(--radius);
   box-shadow: 0 5px 15px rgba(255, 174, 0, 0.808);
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -519,6 +521,27 @@ body {
 .view-project-btn:hover {
   background-color: var(--orangeD);
   transform: translateY(-4px);
+}
+
+/* Custom Scrollbar for Webkit Browsers */
+::-webkit-scrollbar {
+    width: 12px; 
+    transition: 1.3s ease-in-out; 
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 10px;
+    border: 3px solid var(--light-orange1);
+    transition: 1.3s ease-in-out; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--orangeD, #fa8b4b);
 }
 
 /* Responsive adjustments */
@@ -589,6 +612,11 @@ body {
   .about-info-section h1 {
     font-size: 1.5em;
   }
+
+  .icon-item {
+    padding: 8px;
+  }
+
 }
 
 /* Mobile Responsiveness */
