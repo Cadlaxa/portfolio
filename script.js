@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navIcons = document.querySelectorAll('.icon-item[data-target]');
     const closeButtons = document.querySelectorAll('.close-btn');
     const modalContainers = document.querySelectorAll('.modal-container');
+    const toggleModalBtn = document.querySelector('.toggle-modal-btn');
     let highestZIndex = 1000;
+    let activeModal = null; // Variable to store the currently active modal
 
     // --- General Setup ---
     function applyFloatAnimation() {
@@ -35,33 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetModalWindow) {
                     bringToFront(targetModalWindow);
                 }
+                // Show the floating button and set the active modal
+                toggleModalBtn.style.display = 'block';
+                activeModal = targetModalContainer;
             }
         });
     });
 
-    // --- Modal Closing ---
+    // --- Modal Closing and Reset ---
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const parentModalContainer = button.closest('.modal-container');
             if (parentModalContainer) {
                 parentModalContainer.classList.remove('visible');
             }
+            // Hide the floating button
+            toggleModalBtn.style.display = 'none';
+            activeModal = null;
         });
     });
 
     // Reset window position and size after closing animation finishes
     modalContainers.forEach(container => {
-        container.addEventListener('transitionend', (e) => {
-            if (!container.classList.contains('visible') && e.propertyName === 'opacity') {
-                const modalWindow = container.querySelector('.modal-window');
-                if (modalWindow) {
+        const modalWindow = container.querySelector('.modal-window');
+        if (modalWindow) {
+            modalWindow.addEventListener('transitionend', (e) => {
+                // Check if the closing transition has finished
+                if (e.propertyName === 'transform' && !container.classList.contains('visible')) {
+                    // Reset position and size for next open
                     modalWindow.style.left = '';
                     modalWindow.style.top = '';
                     modalWindow.style.width = '';
                     modalWindow.style.height = '';
                 }
-            }
-        });
+            });
+        }
     });
 
     // Handle clicks on modals to bring them to the front
@@ -72,6 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 bringToFront(modalWindow);
             }
         });
+    });
+
+    // --- Floating Button Toggle Functionality ---
+    toggleModalBtn.addEventListener('click', () => {
+        if (activeModal) {
+            activeModal.classList.toggle('visible');
+            const icon = toggleModalBtn.querySelector('i');
+            if (activeModal.classList.contains('visible')) {
+                icon.classList.remove('fa-square-plus');
+                icon.classList.add('fa-square-minus');
+            } else {
+                icon.classList.remove('fa-square-minus');
+                icon.classList.add('fa-square-plus');
+            }
+        }
     });
 
     // --- Draggable Window Functionality ---
@@ -192,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchend', resizeEnd);
     document.addEventListener('mousemove', resize);
     document.addEventListener('touchmove', resize);
-
+    
     // Remove icon hover effects for mobile
     if (window.innerWidth <= 768) {
       const allIconItems = document.querySelectorAll('.icon-item');

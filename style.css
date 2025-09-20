@@ -6,6 +6,35 @@
   transition: 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  transition: opacity 0.5s ease;
+}
+
+.loading-animation {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--orange);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   --orange: #ffa600;
   --orangeL: #ffdb65;
@@ -17,6 +46,7 @@
   --light-orange: #fff6e7;
   --light-orange1: #fffbf4;
   --dark-orange: #6e4800;
+  --bg-color: #a3e4f9;
   --radius: 15px;
   --radius1: 20px;
 }
@@ -39,7 +69,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: #a3e4f9;
+  background-color: var(--bg-color);
 }
 
 .wave {
@@ -65,6 +95,8 @@ body {
     transform: scale(1, 1);
   }
 }
+
+
 
 /* Floating Window */
 .window-container {
@@ -306,32 +338,6 @@ body {
   cursor: grabbing;
 }
 
-/* Resize Handle Styling */
-.resize-handle {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-bottom-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14.75 2.75a.75.75 0 0 0-1.085.017L11.5 4.25V2.5a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 .75.75h4a.75.75 0 0 0 0-1.5h-1.414L13.49 4.647a.75.75 0 0 0-1.085-.017L10.5 7.146V2.5a.75.75 0 0 0-1.5 0v8.5a.75.75 0 0 0 1.5 0V8.853l1.354 1.354a.75.75 0 0 0 1.085-.017l2.104-2.104a.75.75 0 0 0-.017-1.085L14.75 2.75Z"/></svg>') no-repeat center center;
-  background-size: contain;
-  cursor: nwse-resize;
-  /* Cursor for diagonal resizing */
-  z-index: 1;
-  /* Ensure it's above other content but below potential drag outline */
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
-.resize-handle:hover {
-  opacity: 1;
-}
-
-.modal-window.is-resizing .resize-handle {
-  opacity: 1;
-  /* Keep handle visible when resizing */
-}
-
 .modal-content {
   max-height: 400px;
   overflow-y: auto;
@@ -525,23 +531,23 @@ body {
 
 /* Custom Scrollbar for Webkit Browsers */
 ::-webkit-scrollbar {
-    width: 12px; 
-    transition: 1.3s ease-in-out; 
+  width: 12px;
+  transition: 1.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--orange);
-    border-radius: 10px;
-    border: 3px solid var(--light-orange1);
-    transition: 1.3s ease-in-out; 
+  background: var(--orange);
+  border-radius: 10px;
+  border: 3px solid var(--light-orange1);
+  transition: 1.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--orangeD, #fa8b4b);
+  background: var(--orangeD, #fa8b4b);
 }
 
 /* Responsive adjustments */
@@ -617,6 +623,39 @@ body {
     padding: 8px;
   }
 
+}
+
+.toggle-modal-btn {
+  position: fixed;
+  bottom: 60px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  display: none;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out;
+}
+
+.toggle-modal-btn:hover {
+  background-color: var(--orangeD, #fa8b4b);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(173, 133, 0, 0.267), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.toggle-modal-btn .fa-square-minus,
+.toggle-modal-btn .fa-square-plus {
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-modal-btn .fa-square-plus {
+  transform: rotate(180deg);
 }
 
 /* Mobile Responsiveness */

@@ -51,6 +51,15 @@
 </head>
 
 <body>
+  <div class="loading-screen">
+    <div class="loading-animation"></div>
+    <div class="wave"></div>
+  </div>
+
+  <button class="toggle-modal-btn">
+        <i class="fa-solid fa-square-minus"></i>
+  </button>
+
   <div class="circle"></div>
   <!-- Dark mode toggle button -->
   <div class="dark-mode-toggle">
@@ -94,7 +103,7 @@
         </div>
       </div>
       <div class="social-links">
-        <p class="copyright">&copy; 2025 Paolo Cadag</p>
+        <p class="copyright">&copy; 2025 cadlaxa</p>
       </div>
     </div>
     
@@ -279,6 +288,34 @@
 
             <div class="project-item">
               <div class="project-header">
+                <h3 class="project-title">Kasane Teto Dedicated Phonemizer</h3>
+              </div>
+              <div class="project-description">
+                <p>Syllabld Based Phonemizer that combines Japanese and English aliases in one + YAML customizable format</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://docs.google.com/document/d/1Ie4KxzmATXbVjf_8RT3uN5Gx67tMaLFgXExYLDUUp-w/edit?pli=1&tab=t.0" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">EN2JA+ Phonemizer</h3>
+              </div>
+              <div class="project-description">
+                <p>Customizable Phonemizer for Japanese banks to make them sing in English</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://docs.google.com/document/d/1lh-UqqkTr4P7fpLhtSo3Jf9SCD58kjfiGPtdBSc8ciI/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Project</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
                 <h3 class="project-title">Local Database Manager</h3>
               </div>
               <div class="project-description">
@@ -347,6 +384,21 @@
               </div>
               <div class="project-footer">
                 <a href="https://github.com/Cadlaxa/Cash-register" target="_blank" rel="noopener noreferrer">
+                  <button class="view-project-btn">View Source</button>
+                </a>
+                
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h3 class="project-title">Managing and Caring for Yourself</h3>
+              </div>
+              <div class="project-description">
+                <p>Group project website based on selft care</p>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/Cadlaxa/Managing-and-Caring-for-Yourself-Site" target="_blank" rel="noopener noreferrer">
                   <button class="view-project-btn">View Source</button>
                 </a>
                 
@@ -428,6 +480,31 @@
   <script src="script.js"></script>
   <script src="resources/dark-mode-toggle.js"></script>
   <script src="resources/clicks.js"></script>
+  </script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.querySelector('.loading-screen');
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }, 1500);
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
   </script>
 </body>
 
