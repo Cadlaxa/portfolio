@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navIcons = document.querySelectorAll('.icon-item[data-target]');
     const closeButtons = document.querySelectorAll('.close-btn');
     const modalContainers = document.querySelectorAll('.modal-container');
+    let highestZIndex = 1000;
 
     // --- General Setup ---
     function applyFloatAnimation() {
@@ -17,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', applyFloatAnimation);
     applyFloatAnimation();
 
+    // --- Z-Index Management for Multiple Windows ---
+    function bringToFront(modalWindow) {
+        highestZIndex++;
+        modalWindow.style.zIndex = highestZIndex;
+    }
+
     // --- Modal Opening ---
     navIcons.forEach(icon => {
         icon.addEventListener('click', () => {
@@ -24,7 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetModalContainer = document.getElementById(targetId);
             if (targetModalContainer) {
                 targetModalContainer.classList.add('visible');
-                // CSS handles the zoom-in animation by applying 'transform: scale(1)'
+                const targetModalWindow = targetModalContainer.querySelector('.modal-window');
+                if (targetModalWindow) {
+                    bringToFront(targetModalWindow);
+                }
             }
         });
     });
@@ -34,53 +44,62 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const parentModalContainer = button.closest('.modal-container');
             if (parentModalContainer) {
-                parentModalContainer.classList.remove('visible'); // Triggers CSS transition to scale(0.8)
+                parentModalContainer.classList.remove('visible');
             }
         });
     });
 
-    // Close modal by clicking outside
+    // Reset window position and size after closing animation finishes
     modalContainers.forEach(container => {
-        container.addEventListener('click', (e) => {
-            if (e.target === container) { // Check if click was directly on the overlay
-                container.classList.remove('visible');
+        container.addEventListener('transitionend', (e) => {
+            if (!container.classList.contains('visible') && e.propertyName === 'opacity') {
+                const modalWindow = container.querySelector('.modal-window');
+                if (modalWindow) {
+                    modalWindow.style.left = '';
+                    modalWindow.style.top = '';
+                    modalWindow.style.width = '';
+                    modalWindow.style.height = '';
+                }
             }
         });
     });
 
-    // --- Icon Hover Effects ---
-    const allIconItems = document.querySelectorAll('.icon-item');
-    allIconItems.forEach(item => {
-        item.addEventListener('mouseover', () => {
-            item.style.transform = 'translateY(-8px) scale(1.05)';
-        });
-        item.addEventListener('mouseout', () => {
-            item.style.transform = 'translateY(0) scale(1)';
+    // Handle clicks on modals to bring them to the front
+    modalContainers.forEach(container => {
+        container.addEventListener('mousedown', (e) => {
+            const modalWindow = e.target.closest('.modal-window');
+            if (modalWindow) {
+                bringToFront(modalWindow);
+            }
         });
     });
 
     // --- Draggable Window Functionality ---
     let activeDraggable = null;
     let initialX, initialY;
-    let xOffset = 0, yOffset = 0;
 
     function dragStart(e) {
-        if (window.innerWidth <= 768) return; // Disable dragging on mobile
-
         const modalWindow = e.target.closest('.modal-window');
         if (!modalWindow || !e.target.classList.contains('handle')) return;
+
+        e.preventDefault();
 
         activeDraggable = modalWindow;
         activeDraggable.classList.add('is-dragging');
 
-        // Position the modal using top/left for dragging, instead of transform
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
         const rect = activeDraggable.getBoundingClientRect();
+        initialX = clientX - rect.left;
+        initialY = clientY - rect.top;
+
+        activeDraggable.style.position = 'absolute';
         activeDraggable.style.left = `${rect.left}px`;
         activeDraggable.style.top = `${rect.top}px`;
-        initialX = e.clientX - rect.left;
-        initialY = e.clientY - rect.top;
 
         activeDraggable.style.cursor = 'grabbing';
+        bringToFront(activeDraggable);
     }
 
     function dragEnd() {
@@ -93,13 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drag(e) {
         if (!activeDraggable) return;
-        e.preventDefault();
 
-        const currentX = e.clientX;
-        const currentY = e.clientY;
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
 
-        const newX = currentX - initialX;
-        const newY = currentY - initialY;
+        const newX = clientX - initialX;
+        const newY = clientY - initialY;
 
         activeDraggable.style.left = `${newX}px`;
         activeDraggable.style.top = `${newY}px`;
@@ -121,38 +139,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let startX, startY, startWidth, startHeight;
 
     function resizeStart(e) {
-        if (window.innerWidth <= 768) return; // Disable resizing on mobile
-
         const modalWindow = e.target.closest('.modal-window');
         if (!modalWindow || !e.target.classList.contains('resize-handle')) return;
+
+        e.preventDefault();
 
         activeResizable = modalWindow;
         activeResizable.classList.add('is-resizing');
 
-        startX = e.clientX;
-        startY = e.clientY;
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
+        startX = clientX;
+        startY = clientY;
         startWidth = activeResizable.offsetWidth;
         startHeight = activeResizable.offsetHeight;
 
         activeResizable.style.cursor = 'nwse-resize';
+        bringToFront(activeResizable);
     }
 
     function resizeEnd() {
         if (activeResizable) {
             activeResizable.classList.remove('is-resizing');
-            activeResizable.style.cursor = 'grab'; // Revert to grab cursor if it was dragging
+            activeResizable.style.cursor = 'grab';
             activeResizable = null;
         }
     }
 
     function resize(e) {
         if (!activeResizable) return;
-        e.preventDefault();
+        
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
 
-        const width = startWidth + e.clientX - startX;
-        const height = startHeight + e.clientY - startY;
+        const width = startWidth + clientX - startX;
+        const height = startHeight + clientY - startY;
 
-        // Set minimum dimensions to prevent modals from becoming too small
         const minWidth = 300;
         const minHeight = 200;
 
@@ -169,4 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchend', resizeEnd);
     document.addEventListener('mousemove', resize);
     document.addEventListener('touchmove', resize);
+
+    // Remove icon hover effects for mobile
+    if (window.innerWidth <= 768) {
+      const allIconItems = document.querySelectorAll('.icon-item');
+      allIconItems.forEach(item => {
+        item.style.transform = 'none';
+      });
+    }
 });
