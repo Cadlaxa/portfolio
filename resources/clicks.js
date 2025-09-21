@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let firstInteractionOccurred = false;
 
     const interactiveSelectors = `
-        a, button, image, input, select, textarea, input, img, [class="cad-name"],
+        a, button, image, input, select, textarea, input, [class="cad-name"],
         project-item, [class="faq-item"],
         [role="button"], [role="link"], [role="checkbox"],
         [role="radio"], [role="switch"], 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- FIX: Correctly handle hover for project items
-    document.querySelectorAll('.project-item, .link-item').forEach(item => {
+    document.querySelectorAll('.project-item, .link-item, .icon-item').forEach(item => {
         let isHovered = false;
         item.addEventListener('mouseenter', () => {
             if (!isHovered) {

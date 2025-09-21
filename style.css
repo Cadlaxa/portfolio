@@ -216,8 +216,7 @@ body {
   }
 }
 
-.modal-window-frame {
-  width: 800px;
+.modal-window-base {
   max-width: 90vw;
   background: var(--light-orange1);
   border-radius: var(--radius);
@@ -226,6 +225,26 @@ body {
   border-color: var(--orange);
   border-width: 4px;
   border-style: solid;
+}
+
+.modal-frame {
+  width: 800px;
+}
+
+.modal-links {
+  width: 600px;
+}
+
+.modal-projects {
+  width: 1000px;
+}
+
+.modal-faq {
+  width: 600px;
+}
+
+.modal-contacts {
+  width: 400px;
 }
 
 .window-frame {
@@ -262,6 +281,7 @@ body {
 }
 
 .window-content {
+  max-height: 60vh;
   padding: 50px 20px;
   text-align: center;
 }
@@ -354,7 +374,7 @@ body {
 .icon-item:hover {
   transform: translateY(-5px);
   background-color: var(--orangeL);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 .icon-item img {
@@ -388,7 +408,6 @@ body {
   width: 30px;
   height: 30px;
   margin: 0 10px;
-
   transition: filter 0.3s ease;
 }
 
@@ -431,15 +450,10 @@ body {
 
 .modal-window {
   position: absolute;
-  width: 600px;
-  max-width: 90vw;
   background-color: #fff;
   border-radius: var(--radius);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   will-change: transform, top, left;
-  /* Optimize for animation and dragging */
-
-  /* Animation initial state for desktop */
   opacity: 0;
   transform: scale(0.5);
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.9), opacity 0.5s ease;
@@ -458,18 +472,25 @@ body {
 }
 
 .close-btn {
-  background: none;
-  border: none;
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1.7em;
   cursor: pointer;
-  line-height: 1;
+  line-height: 0;
   padding: 0;
-  transition: transform 0.2s ease;
+  height: 1em; 
+  width: 1em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; 
+  border-color: transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .close-btn:hover {
-  transform: rotate(90deg);
+  transform: scale(1.2); 
+  background-color: var(--orangeD); 
 }
 
 .window-header.handle {
@@ -481,7 +502,7 @@ body {
 }
 
 .modal-content {
-  max-height: 400px;
+  max-height: 60vh;
   overflow-y: auto;
   padding: 2rem;
   display: flex;
@@ -816,129 +837,6 @@ body {
   background: var(--orangeD, #fa8b4b);
 }
 
-@media (max-width: 992px) {
-
-  .project-grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-
-  .window-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20%;
-  }
-
-  .link-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 20px;
-    padding-top: 20px;
-    text-align: center;
-  }
-
-  .link-item {
-    height: 85px;
-    width: 85px;
-  }
-
-  .link-favicon i {
-    font-size: 2.5em;
-  }
-
-  .link-favicon svg {
-    width: 50px;
-    height: 50px;
-  }
-
-  .view-link-btn {
-    font-weight: 600;
-    font-size: 0.7em;
-  }
-
-  .project-grid-container {
-    grid-template-columns: 1fr;
-  }
-
-  .project-item {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .modal-window {
-    max-height: 90vh;
-    /* Set a max height relative to the viewport height */
-  }
-
-  .modal-content {
-    padding: 1rem;
-  }
-
-  .window-frame {
-    max-height: 80vh;
-    overflow-y: auto;
-    background: #fffbf400;
-    border-radius: var(--radius);
-    border: transparent;
-  }
-
-  .social-links {
-    background-color: transparent;
-  }
-
-  .intro-section h1 {
-    line-height: 1.0em;
-  }
-
-  .nav-icons {
-    margin: -10px;
-  }
-
-  .profile-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: -10%;
-    margin-left: 10%;
-  }
-
-  .profile-name h1 {
-    margin: 3%;
-    line-height: 1.0em;
-    font-size: 32px;
-  }
-
-  .profile-name p {
-    margin-top: 1%;
-    font-size: 15px;
-  }
-
-  .about-section h1 {
-    font-size: 1.5em;
-  }
-
-  .about-info-section h1 {
-    font-size: 1.5em;
-  }
-
-  .icon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    padding: 8px 16px 8px 16px;
-    border-radius: 10px;
-    background-color: #ffeed0c5;
-  }
-
-}
-
 .toggle-modal-btn {
   position: fixed;
   bottom: 60px;
@@ -1030,9 +928,137 @@ body {
   color: var(--p);
 }
 
+@media (max-width: 992px) {
+
+  .project-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .window-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20%;
+  }
+
+  .link-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .link-item {
+    height: 85px;
+    width: 85px;
+  }
+
+  .link-favicon i {
+    font-size: 2.5em;
+  }
+
+  .link-favicon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .view-link-btn {
+    font-weight: 600;
+    font-size: 0.7em;
+  }
+
+  .project-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-item {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .modal-window {
+    max-height: 90vh;
+    /* Set a max height relative to the viewport height */
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+
+  .window-frame {
+    overflow-y: auto;
+    background: #fffbf400;
+    border-radius: var(--radius);
+    border: transparent;
+  }
+
+  .social-links {
+    background-color: transparent;
+  }
+
+  .intro-section h1 {
+    line-height: 1.0em;
+  }
+
+  .nav-icons {
+    margin: -10px;
+  }
+
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: -10%;
+    margin-left: 10%;
+  }
+
+  .profile-name h1 {
+    margin: 3%;
+    line-height: 1.0em;
+    font-size: 32px;
+  }
+
+  .profile-name p {
+    margin-top: 1%;
+    font-size: 15px;
+  }
+
+  .about-section h1 {
+    font-size: 1.5em;
+  }
+
+  .about-info-section h1 {
+    font-size: 1.5em;
+  }
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    background-color: #ffeed0c5;
+  }
+
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
   /* (Mobile CSS remains the same) */
+
+  .window-content {
+    max-height: 80vh;
+    padding: 50px 20px;
+    text-align: center;
+  }
 
   .modal-window {
     position: relative;
@@ -1047,5 +1073,9 @@ body {
 
   .window-header.handle {
     cursor: default;
+  }
+
+  .modal-content {
+    max-height: 65vh;
   }
 }
