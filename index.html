@@ -60,7 +60,7 @@
   </svg>
   <div class="loading-screen">
     <div class="loading-animation"></div>
-    <div class="wave"></div>
+      <div class="wave"></div>
   </div>
 
   <button class="toggle-modal-btn">
@@ -74,7 +74,36 @@
   </div>
 
   <div class="background-scene">
-    <div class="wave"></div>
+    <div class="waves back">
+      <svg viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave-group">
+          <use xlink:href="#gentle-wave" x="48" y="5"></use>
+          <use xlink:href="#gentle-wave" x="48" y="7"></use>
+        </g>
+      </svg>
+    </div>
+    
+    <!-- <div class="boat">
+      <div class="sail1"></div>
+      <div class="sail2"></div>
+      <div class="hull"></div>
+    </div> -->
+    
+    <div class="waves front">
+      <svg viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave-group">
+          <use xlink:href="#gentle-wave" x="48" y="0"></use>
+          <use xlink:href="#gentle-wave" x="48" y="3"></use>
+        </g>
+      </svg>
+    </div>
+    
   </div>
   <div class="window-container main-window">
     <div class="window-frame">
@@ -83,7 +112,7 @@
       </div>
       <div class="window-content">
         <div class="intro-section">
-          <h1>hi! i'm <span class="cad-name">cadlaxa</span></h1>
+          <h1>hi! i'm <span class="cad-name-special">cadlaxa</span></h1>
           <p>student, illustrator, and developer</p>
         </div>
         <div class="nav-icons">
@@ -119,7 +148,7 @@
   <!-- ABOUT -->
   <div id="about-modal" class="modal-container">
     <div class="modal-window">
-      <div class="window-frame">
+      <div class="modal-window-frame">
         <div class="window-header handle">
           <span class="window-title">About</span>
           <button class="close-btn">&times;</button>
@@ -182,7 +211,7 @@
   <!-- LINKS -->
   <div id="links-modal" class="modal-container">
     <div class="modal-window">
-      <div class="window-frame">
+      <div class="modal-window-frame">
         <div class="window-header handle">
           <span class="window-title">Links</span>
           <button class="close-btn">&times;</button>
@@ -191,7 +220,7 @@
           <div class="profile-container">
             <div class="profile-header">
               <div class="profile-name">
-                <h1><span class="cad-name">chunlink...</span></h1>
+                <h1><span class="cad-name">chunlinks...</span></h1>
               </div>
             </div>
           </div>
@@ -271,7 +300,7 @@
   <!-- PROJECTS -->
   <div id="project-modal" class="modal-container">
     <div class="modal-window">
-      <div class="window-frame">
+      <div class="modal-window-frame">
         <div class="window-header handle">
           <span class="window-title">Projects</span>
           <button class="close-btn">&times;</button>
@@ -508,7 +537,7 @@
   <!-- FAQ -->
   <div id="faq-modal" class="modal-container">
     <div class="modal-window">
-      <div class="window-frame">
+      <div class="modal-window-frame">
         <div class="window-header handle">
           <span class="window-title">Frequently Asked Questions</span>
           <button class="close-btn">&times;</button>
@@ -621,7 +650,7 @@
   <!-- CONTACTS -->
   <div id="contact-modal" class="modal-container">
     <div class="modal-window">
-      <div class="window-frame">
+      <div class="modal-window-frame">
         <div class="window-header handle">
           <span class="window-title">Contact</span>
           <button class="close-btn">&times;</button>

@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let highestZIndex = 1000;
     let activeModal = null;
 
+    const element = document.querySelector('.cad-name-special');
+    if (element) {
+        const text = element.textContent;
+        element.textContent = '';
+
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.style.animationDelay = `${index * 0.1}s`;
+            element.appendChild(span);
+        });
+    }
+
     // Select all link-item elements
     const linkItems = document.querySelectorAll('.link-item');
     linkItems.forEach(item => {
@@ -274,4 +287,67 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const boat = document.querySelector('.boat');
+    let boatLeft = 10;
+    let isDragging = false;
+    let startX1;
+    let startBoatLeft;
+
+    // --- Helper function to get the correct clientX from mouse or touch event ---
+    function getClientX(e) {
+        return e.touches ? e.touches[0].clientX : e.clientX;
+    }
+
+    // --- Start Dragging (Mouse or Touch) ---
+    const startDrag = (e) => {
+        isDragging = true;
+        startX1 = getClientX(e);
+        startBoatLeft = boatLeft;
+        boat.style.cursor = 'grabbing';
+        e.preventDefault();
+    };
+
+    // --- End Dragging (Mouse or Touch) ---
+    const endDrag = () => {
+        isDragging = false;
+        boat.style.cursor = 'grab';
+    };
+
+    // --- Move Boat (Mouse or Touch) ---
+    const moveBoat = (e) => {
+        if (!isDragging) return;
+        
+        const mouseDeltaX = getClientX(e) - startX1;
+        const newBoatLeft = startBoatLeft + (mouseDeltaX / window.innerWidth) * 100;
+
+        // Boundary checks
+        if (newBoatLeft >= 5 && newBoatLeft <= 60) {
+            boatLeft = newBoatLeft;
+            boat.style.left = `${boatLeft}vw`;
+        }
+    };
+
+    // --- Add all event listeners ---
+    window.addEventListener('keydown', (e) => {
+        if (e.keyCode === 37 && boatLeft > 5) { // left arrow
+            boatLeft = boatLeft - 5;
+            boat.style.left = `${boatLeft}vw`;
+        }
+        
+        if (e.keyCode === 39 && boatLeft < 60) { // right arrow
+            boatLeft = boatLeft + 5;
+            boat.style.left = `${boatLeft}vw`;
+        }
+    });
+
+    // For Mouse
+    boat.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', moveBoat);
+    document.addEventListener('mouseup', endDrag);
+
+    // For Touch
+    boat.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', moveBoat);
+    document.addEventListener('touchend', endDrag);
 });

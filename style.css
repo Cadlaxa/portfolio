@@ -6,7 +6,15 @@
   transition: 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 :root {
+  --yellow: #ffef5b;
   --orange: #ffa600;
   --orangeL: #ffdb65;
   --orangeL1: #fbce3d;
@@ -20,6 +28,7 @@
   --dark-orange: #6e4800;
   --dark-orange1: #cb682e;
   --bg-color: #a3e4f9;
+  --wave: #0cbaff;
   --radius: 15px;
   --radius1: 20px;
 }
@@ -73,31 +82,113 @@ body {
   background-color: var(--bg-color);
 }
 
-.wave {
+/* --- Waves --- */
+.waves {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+}
+
+.waves svg {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 150px;
-  background: #c5effd;
-  border-radius: 50% / 100px 100px 0 0;
-  animation: wave-animation 5s infinite ease-in-out;
+  left: 0;
+  height: 50vh;
 }
 
-@keyframes wave-animation {
+.waves use {
+  animation: wavewave 5s cubic-bezier(.55, .5, .45, .5) infinite;
+  fill: var(--wave);
+  opacity: 0.5;
+}
+
+.waves.back {
+  z-index: 1;
+}
+
+.waves.back use:nth-child(2) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.waves.back use:nth-child(3) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+.waves.front {
+  z-index: 3;
+}
+
+.waves.front use:nth-child(2) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.waves.front use:nth-child(3) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+@keyframes wavewave {
   0% {
-    transform: scale(1, 1);
+    transform: translate(-90px);
   }
-
-  50% {
-    transform: scale(1.8, 1);
-  }
-
   100% {
-    transform: scale(1, 1);
+    transform: translate(85px);
   }
 }
 
+/* --- Boat --- */
+.boat {
+  /* @size was roughly 25vw */
+  position: fixed;
+  bottom: 50px;
+  left: 10vw;
+  transition: left 2s ease;
+  z-index: 2;
+  display: inline-block;
+  transform-origin: center bottom;
+  animation: bob 4s ease-in-out alternate infinite;
+}
 
+.boat .hull {
+  width: 25vw;
+  height: 8.75vw; 
+  background: var(--yellow);
+  border-radius: 0 0 12.5vw 12.5vw; 
+  border-top: 0.375vw solid var(--dark-orange1); 
+}
+
+.boat .sail1,
+.boat .sail2 {
+  margin-bottom: 0.25vw; 
+  display: inline-block;
+}
+
+.boat .sail1 {
+  width: 0px;
+  border-bottom: 11.25vw solid var(--light-orange1); 
+  border-left: 10vw solid transparent; 
+  margin: 0 0.625vw 0.25vw; 
+}
+
+.boat .sail2 {
+  width: 0px;
+  border-bottom: 13.75vw solid var(--light-orange1); 
+  border-right: 12.5vw solid transparent; 
+}
+
+@keyframes bob {
+  0% {
+    transform: rotate(-10deg) translateY(0vh);
+  }
+  100% {
+    transform: rotate(8deg) translateY(-20vh);
+  }
+}
 
 /* Floating Window */
 .window-container {
@@ -109,7 +200,6 @@ body {
   animation: float-animation 6s ease-in-out infinite;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   border-radius: var(--radius);
-  background: #fdfdfd;
 }
 
 @keyframes float-animation {
@@ -126,12 +216,25 @@ body {
   }
 }
 
+.modal-window-frame {
+  width: 800px;
+  max-width: 90vw;
+  background: var(--light-orange1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  overflow-y: auto;
+  border-color: var(--orange);
+  border-width: 4px;
+  border-style: solid;
+}
+
 .window-frame {
   width: 800px;
   max-width: 90vw;
   background: var(--light-orange1);
   border-radius: var(--radius);
   overflow: hidden;
+  overflow-y: auto;
   border-color: var(--orange);
   border-width: 4px;
   border-style: solid;
@@ -175,11 +278,48 @@ body {
   color: var(--orange);
 }
 
+.cad-name-special {
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+.cad-name-special span {
+    display: inline-block;
+    animation-name: text-wave-animation;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes text-wave-animation {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .sub-name {
   color: var(--orangeD);
 }
 
 .cad-name:hover {
+  transform: scale(1.2);
+  color: var(--orangeL);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.cad-name-special:hover {
   transform: scale(1.2);
   color: var(--orangeL);
   transition: transform 0.3s ease, color 0.3s ease;
@@ -630,7 +770,7 @@ body {
 
 .view-link-btn {
   font-weight: 600;
-  font-size: 1em;
+  font-size: 0.9em;
   color: var(--p);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -691,7 +831,6 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20%;
-
   }
 
   .link-grid-container {
@@ -742,6 +881,13 @@ body {
   .window-frame {
     max-height: 80vh;
     overflow-y: auto;
+    background: #fffbf400;
+    border-radius: var(--radius);
+    border: transparent;
+  }
+
+  .social-links {
+    background-color: transparent;
   }
 
   .intro-section h1 {
@@ -781,7 +927,14 @@ body {
   }
 
   .icon-item {
-    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    background-color: #ffeed0c5;
   }
 
 }
