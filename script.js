@@ -7,6 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let highestZIndex = 1000;
     let activeModal = null;
 
+    // Select all link-item elements
+    const linkItems = document.querySelectorAll('.link-item');
+    linkItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const url = item.dataset.link;
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+
     // --- General Setup ---
     function applyFloatAnimation() {
         if (window.innerWidth > 768) {

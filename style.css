@@ -9,6 +9,7 @@
 :root {
   --orange: #ffa600;
   --orangeL: #ffdb65;
+  --orangeL1: #fbce3d;
   --orangeHL: #ffeed0;
   --orangeD: #fa8b4b;
   --p: #3d3d3d;
@@ -17,6 +18,7 @@
   --light-orange: #fff6e7;
   --light-orange1: #fffbf4;
   --dark-orange: #6e4800;
+  --dark-orange1: #cb682e;
   --bg-color: #a3e4f9;
   --radius: 15px;
   --radius1: 20px;
@@ -471,9 +473,9 @@ body {
 /* Project Modal Styling */
 .project-grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0px 0px 0px;
   text-align: center;
 }
 
@@ -492,6 +494,7 @@ body {
   box-shadow: 0 10px 25px rgba(255, 174, 0, 0.904);
   transform: translateY(-4px);
   background-color: var(--light-orange);
+
 }
 
 .project-header {
@@ -501,15 +504,19 @@ body {
 .project-title {
   font-size: 1.3em;
   color: var(--orange);
-  /* Using your defined orange variable */
+  line-height: 1.2;
   margin: 0;
+}
+
+.project-item:hover .project-title {
+  color: var(--orangeD);
 }
 
 .project-description p {
   font-size: 1em;
   color: var(--p);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.3;
 }
 
 .project-footer {
@@ -533,6 +540,121 @@ body {
   transform: translateY(-4px);
 }
 
+/* Links Modal Styling */
+.link-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.link-item {
+  position: relative;
+  background-color: var(--orangeHL);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-favicon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease filter 0.3 ease;
+}
+
+.link-favicon i {
+  font-size: 3em;
+  color: var(--orange);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease filter 0.3 ease;
+  filter: drop-shadow(4px 4px 0px #cacaca);
+  text-shadow:
+    -1.5px -1.5px 0px var(--dark-orange1),
+    /* Top-left */
+    1.5px -1.5px 0px var(--dark-orange1),
+    /* Top-right */
+    -1.5px 1.5px 0px var(--dark-orange1),
+    /* Bottom-left */
+    1.5px 1.5px 0px var(--dark-orange1);
+  /* Bottom-right */
+}
+
+.link-favicon svg {
+  fill: var(--orange);
+  width: 60px;
+  height: 60px;
+  stroke: var(--dark-orange1);
+  stroke-width: 1.5px;
+  transition: fill 0.3s ease transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease filter 0.3 ease;
+  filter: drop-shadow(4px 4px 0px #cacaca);
+}
+
+.link-item:hover .link-favicon svg {
+  fill: var(--orangeL1);
+  filter: drop-shadow(0px 0px 0px #cacaca);
+  stroke: var(--orangeD);
+}
+
+.link-item:hover .link-favicon i {
+  color: var(--orangeL1);
+  filter: drop-shadow(0px 0px 0px #cacaca);
+  text-shadow:
+    -1.5px -1.5px 0px var(--orangeD),
+    /* Top-left */
+    1.5px -1.5px 0px var(--orangeD),
+    /* Top-right */
+    -1.5px 1.5px 0px var(--orangeD),
+    /* Bottom-left */
+    1.5px 1.5px 0px var(--orangeD);
+  /* Bottom-right */
+}
+
+.link-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  z-index: 1;
+  transform: translateY(100%);
+  transition: transform 0.3s ease background-color 0.3s ease;
+  background-color: var(--light-orange);
+}
+
+.view-link-btn {
+  font-weight: 600;
+  font-size: 1em;
+  color: var(--p);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.link-item:hover {
+  box-shadow: 0 10px 25px rgba(255, 174, 0, 0.904);
+  transform: translateY(-4px);
+  background-color: var(--orangeL);
+}
+
+.link-item:hover .link-favicon {
+  transform: translateY(-25%);
+}
+
+.link-item:hover .link-footer {
+  transform: translateY(4px);
+  background-color: var(--orangeL);
+}
+
+.link-item:hover .view-link-btn {
+  opacity: 1;
+}
+
 /* Custom Scrollbar for Webkit Browsers */
 ::-webkit-scrollbar {
   width: 12px;
@@ -554,10 +676,8 @@ body {
   background: var(--orangeD, #fa8b4b);
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
 
-  /* For tablets and smaller desktops */
   .project-grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -565,21 +685,58 @@ body {
 
 @media (max-width: 600px) {
 
-  /* For mobile devices */
+  .window-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20%;
+
+  }
+
+  .link-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .link-item {
+    height: 85px;
+    width: 85px;
+  }
+
+  .link-favicon i {
+    font-size: 2.5em;
+  }
+
+  .link-favicon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .view-link-btn {
+    font-weight: 600;
+    font-size: 0.7em;
+  }
+
   .project-grid-container {
     grid-template-columns: 1fr;
   }
 
   .project-item {
     width: 90%;
-    /* Make items take more width on mobile */
     margin: 0 auto;
-    /* Center the item */
   }
 
   .modal-window {
     max-height: 90vh;
     /* Set a max height relative to the viewport height */
+  }
+
+  .modal-content {
+    padding: 1rem;
   }
 
   .window-frame {
@@ -663,61 +820,61 @@ body {
 }
 
 .faq-item {
-    background-color: var(--orangeHL);
-    border-radius: var(--radius);
-    margin-bottom: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--orangeHL);
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 25px rgba(255, 174, 0, 0.808);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 25px rgba(255, 174, 0, 0.808);
 }
 
 .faq-question {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1.0em;
-    font-weight: 600;
-    color: var(--p);
-    user-select: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.0em;
+  font-weight: 600;
+  color: var(--p);
+  user-select: none;
 }
 
 .faq-question:hover {
-    color: var(--orangeD);
+  color: var(--orangeD);
 }
 
 .faq-question i {
-    font-size: 1.2em;
-    transition: transform 0.3s ease;
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
 }
 
 .faq-item.open .faq-question i {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
 }
 
 .faq-item.open .faq-answer {
-    max-height: 200px; /* Adjust as needed for longer answers */
-    padding: 0 20px 20px 20px;
+  max-height: 200px;
+  padding: 0 20px 20px 20px;
 }
 
 .faq-answer p {
-    margin: 0;
-    padding: 0;
-    font-size: 1em;
-    line-height: 1.5;
-    text-align: left;
-    color: var(--p);
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--p);
 }
 
 /* Mobile Responsiveness */
