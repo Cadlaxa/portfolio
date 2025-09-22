@@ -1,0 +1,75 @@
+/* Palette button */
+button.palette-btn {
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--orange);
+    color: white;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out;
+}
+
+button.palette-btn:hover {
+    transform: translateY(-5px);
+    background-color: var(--orangeD, #fa8b4b);
+
+}
+
+/* Palette options container */
+.palette-options {
+    position: fixed;
+    bottom: 30vh;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2000;
+    transition: opacity 0.3s ease;
+}
+
+.palette-options.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.palette {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.palette:hover {
+    transform: scale(1.2);
+}
+
+.palette[data-palette="orange"] {
+    background: #ffa600;
+}
+
+.palette[data-palette="blue"] {
+    background: #3b82f6;
+}
+
+.palette[data-palette="green"] {
+    background: #10b981;
+}
+
+.palette[data-palette="pink"] {
+    background: #ec4899;
+}
+
+.palette[data-palette="purple"] {
+    background: #8b5cf6;
+}

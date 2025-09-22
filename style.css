@@ -388,11 +388,11 @@ body {
   box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
 }
 
-.icon-item img {
+.icon-item .icon {
   width: 60px;
   height: 60px;
   margin-bottom: 5px;
-  filter: invert(30%) sepia(40%) saturate(850%) hue-rotate(338deg) brightness(100%) contrast(100%) drop-shadow(4px 4px 0px var(--icon-drop-shadow));
+  background-color: var(--orange);
   transition: filter 0.3s ease;
 }
 
@@ -672,10 +672,9 @@ body {
 }
 
 .project-item:hover {
-  box-shadow: 0 10px 25px rgba(255, 174, 0, 0.904);
+  box-shadow: 0 10px 25px var(--orange);
   transform: translateY(-4px);
   background-color: var(--light-orange);
-
 }
 
 .project-header {
@@ -741,7 +740,7 @@ body {
 }
 
 .skill-tag:hover {
-  box-shadow: 0 5px 10px rgba(255, 174, 0, 0.904);
+  box-shadow: 0 5px 10px var(--orange);
   transform: translateY(-4px);
   background-color: var(--light-orange);
   color: var(--orangeD);
@@ -844,7 +843,7 @@ body {
 }
 
 .link-item:hover {
-  box-shadow: 0 10px 25px rgba(255, 174, 0, 0.904);
+  box-shadow: 0 10px 25px var(--orange);
   transform: translateY(-4px);
   background-color: var(--orangeL);
 }
@@ -864,7 +863,7 @@ body {
 
 /* Custom Scrollbar for Webkit Browsers */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
   transition: 1.3s ease-in-out;
 }
 
@@ -875,7 +874,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--orange);
   border-radius: 10px;
-  border: 3px solid var(--light-orange1);
   transition: 1.3s ease-in-out;
 }
 
@@ -885,10 +883,10 @@ body {
 
 .toggle-modal-btn {
   position: fixed;
-  bottom: 60px;
+  bottom: 118px;
   left: 10px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: var(--orange);
   color: white;
@@ -904,7 +902,6 @@ body {
 .toggle-modal-btn:hover {
   background-color: var(--orangeD, #fa8b4b);
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(173, 133, 0, 0.267), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .toggle-modal-btn .fa-square-minus,
@@ -925,7 +922,7 @@ body {
 
 .faq-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 25px rgba(255, 174, 0, 0.808);
+  box-shadow: 0 15px 25px var(--orange);
 }
 
 .faq-question {

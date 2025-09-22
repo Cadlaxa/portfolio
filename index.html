@@ -10,6 +10,7 @@
 
   <!-- Get css icons from css.gg -->
   <link href="resources/sun moon.css" rel="stylesheet">
+  <link href="resources/color-palette.css" rel="stylesheet">
 
   <!-- CSS for dark mode toggle button -->
   <link href="resources/dark-mode-toggle.css" rel="stylesheet">
@@ -67,6 +68,19 @@
     <i class="fa-solid fa-square-minus"></i>
   </button>
 
+  <button class="palette-btn">
+    <i class="fa-solid fa-brush"></i>
+  </button>
+  
+  <!-- Palette Options -->
+  <div class="palette-options">
+    <div class="palette" data-palette="orange"></div>
+    <div class="palette" data-palette="blue"></div>
+    <div class="palette" data-palette="green"></div>
+    <div class="palette" data-palette="pink"></div>
+    <div class="palette" data-palette="purple"></div>
+  </div>
+
   <div class="circle"></div>
   <!-- Dark mode toggle button -->
   <div class="dark-mode-toggle">
@@ -119,23 +133,33 @@
         </div>
         <div class="nav-icons">
           <div class="icon-item" data-target="about-modal">
-            <img src="resources/icon_about.webp" alt="About">
+            <div class="icon"
+              style="mask: url('resources/icon_about.svg') no-repeat center / contain; -webkit-mask: url('resources/icon_about.svg') no-repeat center / contain;">
+            </div>
             <span>about</span>
           </div>
           <div class="icon-item" data-target="links-modal">
-            <img src="resources/icon_links.webp" alt="Links">
+            <div class="icon"
+              style="mask: url('resources/icon_links.svg') no-repeat center / contain; -webkit-mask: url('resources/icon_links.svg') no-repeat center / contain;">
+            </div>
             <span>links</span>
           </div>
           <div class="icon-item" data-target="project-modal">
-            <img src="resources/icon_work.webp" alt="Projects">
+            <div class="icon"
+              style="mask: url('resources/icon_work.svg') no-repeat center / contain; -webkit-mask: url('resources/icon_work.svg') no-repeat center / contain;">
+            </div>
             <span>projects</span>
           </div>
           <div class="icon-item" data-target="faq-modal">
-            <img src="resources/icon_faq.webp" alt="FAQ">
+            <div class="icon"
+              style="mask: url('resources/icon_faq.svg') no-repeat center / contain; -webkit-mask: url('resources/icon_faq.svg') no-repeat center / contain;">
+            </div>
             <span>faq</span>
           </div>
           <div class="icon-item" data-target="contact-modal">
-            <img src="resources/icon_contact.webp" alt="Contact">
+            <div class="icon"
+              style="mask: url('resources/icon_contact.svg') no-repeat center / contain; -webkit-mask: url('resources/icon_contact.svg') no-repeat center / contain;">
+            </div>
             <span>contact</span>
           </div>
         </div>
@@ -700,6 +724,7 @@
   <script src="script.js"></script>
   <script src="resources/dark-mode-toggle.js"></script>
   <script src="resources/clicks.js"></script>
+  <script src="resources/color-palette-toggle.js"></script>
   </script>
 
   <script>

@@ -5,19 +5,18 @@ div.dark-mode-toggle {
     left: 10px; 
     z-index: 2000; 
     cursor: pointer; 
-    background: #ffa600; 
+    background: var(--orange); 
     color: #ffffff; 
     padding: 10px; 
     border-radius: 50%; 
-    box-shadow: 0 3px 10px rgba(255, 179, 16, 0.705), 0 3px 6px rgba(0, 0, 0, 0.23); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: filter 1.8s ease;
     transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.2s ease-in-out;
 }
 
 
 div.dark-mode-toggle:hover {
-    box-shadow: 0 10px 20px rgba(173, 133, 0, 0.267), 0 6px 6px rgba(0, 0, 0, 0.23); 
-    color: #ffeecb;
+    background-color: var(--orangeD, #fa8b4b);
     transform: translateY(-5px);
     transition: background-color .2s, transform .2s, color .2s;
 }
