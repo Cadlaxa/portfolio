@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let firstInteractionOccurred = false;
 
     const interactiveSelectors = `
-        a, button, image, input, select, textarea, input, [class="cad-name"],
-        project-item, [class="faq-item"],
+        a, button, image, input, select, textarea, i, [class="cad-name"],
+        project-item,
         [role="button"], [role="link"], [role="checkbox"],
         [role="radio"], [role="switch"], 
         [tabindex]:not([tabindex="-1"]),
@@ -108,11 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- FIX: Correctly handle hover for project items
-    document.querySelectorAll('.project-item, .link-item, .icon-item').forEach(item => {
+    document.querySelectorAll('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
         let isHovered = false;
         item.addEventListener('mouseenter', () => {
             if (!isHovered) {
                 playPitchedHoverSound();
+                isHovered = true;
+            }
+        });
+        item.addEventListener('mouseleave', () => {
+            isHovered = false;
+        });
+    });
+
+    document.querySelectorAll('.icon-item, .faq-question, .faq-modal').forEach(item => {
+        let isHovered = false;
+        item.addEventListener('click', () => {
+            if (!isHovered) {
+                playRandomClickSound();
                 isHovered = true;
             }
         });

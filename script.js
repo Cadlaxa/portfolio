@@ -2,10 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.querySelector('.main-window');
     const navIcons = document.querySelectorAll('.icon-item[data-target]');
     const closeButtons = document.querySelectorAll('.close-btn');
+    const MobileCloseButtons = document.querySelectorAll('.nav-bar');
     const modalContainers = document.querySelectorAll('.modal-container');
     const toggleModalBtn = document.querySelector('.toggle-modal-btn');
     let highestZIndex = 1000;
     let activeModal = null;
+
+    document.addEventListener('contextmenu', function (event) {
+        // Prevent the context menu from appearing
+        event.preventDefault();
+    });
 
     const element = document.querySelector('.cad-name-special');
     if (element) {
@@ -60,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetModalWindow = targetModalContainer.querySelector('.modal-window');
                 if (targetModalWindow) {
                     bringToFront(targetModalWindow);
+                    navigator.vibrate([50, 150, 50])
                 }
                 toggleModalBtn.style.display = 'block';
                 activeModal = targetModalContainer;
@@ -71,11 +78,49 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const parentModalContainer = button.closest('.modal-container');
-            if (parentModalContainer) {
-                parentModalContainer.classList.remove('visible');
+            if (window.innerWidth > 600) {
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const parentModalContainer = button.closest('.modal-container');
+                        if (parentModalContainer) {
+                            parentModalContainer.classList.remove('visible');
+                        }
+                        toggleModalBtn.style.display = 'none';
+                        activeModal = null;
+                    });
+                });
             }
-            toggleModalBtn.style.display = 'none';
-            activeModal = null;
+
+        });
+    });
+
+    MobileCloseButtons.forEach(button => {
+        let startY1 = 0;
+        let endY1 = 0;
+        let moved = false;
+
+        button.addEventListener('touchstart', e => {
+            startY1 = e.touches[0].clientY;
+            endY1 = startY1;
+            moved = false;
+        });
+
+        button.addEventListener('touchmove', e => {
+            endY1 = e.touches[0].clientY;
+            moved = true; // mark that a move happened
+        });
+
+        button.addEventListener('touchend', () => {
+            if (moved && startY1 - endY1 > 50) {
+                const parentModalContainer = button.closest('.modal-container');
+                if (parentModalContainer) {
+                    parentModalContainer.classList.remove('visible');
+                }
+                toggleModalBtn.style.display = 'none';
+                activeModal = null;
+            }
+            startY1 = endY1 = 0;
+            moved = false;
         });
     });
 
@@ -134,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         e.preventDefault();
 
-        activeDraggable = handle.closest('.modal-window');
+        activeDraggable = handle.closest('.modal-window, .nav-bar');
         if (!activeDraggable) return;
 
         activeDraggable.classList.add('is-dragging');
@@ -221,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resize(e) {
         if (!activeResizable) return;
-        
+
         const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
         const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
 
@@ -244,12 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchend', resizeEnd);
     document.addEventListener('mousemove', resize);
     document.addEventListener('touchmove', resize);
-    
+
     if (window.innerWidth <= 768) {
-      const allIconItems = document.querySelectorAll('.icon-item');
-      allIconItems.forEach(item => {
-        item.style.transform = 'none';
-      });
+        const allIconItems = document.querySelectorAll('.icon-item');
+        allIconItems.forEach(item => {
+            item.style.transform = 'none';
+        });
     }
 
     // Function to handle the FAQ dropdown
@@ -260,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
                 const faqAnswer = faqItem.querySelector('.faq-answer');
-
                 faqItem.classList.toggle('open');
+                navigator.vibrate([20])
             });
         });
     }
@@ -317,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Move Boat (Mouse or Touch) ---
     const moveBoat = (e) => {
         if (!isDragging) return;
-        
+
         const mouseDeltaX = getClientX(e) - startX1;
         const newBoatLeft = startBoatLeft + (mouseDeltaX / window.innerWidth) * 100;
 
@@ -334,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
             boatLeft = boatLeft - 5;
             boat.style.left = `${boatLeft}vw`;
         }
-        
+
         if (e.keyCode === 39 && boatLeft < 60) { // right arrow
             boatLeft = boatLeft + 5;
             boat.style.left = `${boatLeft}vw`;
@@ -350,4 +395,22 @@ document.addEventListener('DOMContentLoaded', () => {
     boat.addEventListener('touchstart', startDrag);
     document.addEventListener('touchmove', moveBoat);
     document.addEventListener('touchend', endDrag);
+    
+    // navbar animation
+    document.addEventListener("DOMContentLoaded", () => {
+        const navBar = document.querySelector(".nav-bar");
+
+        function triggerBounce() {
+            navBar.classList.remove("bouncing");
+            void navBar.offsetWidth;
+            navBar.classList.add("bouncing");
+
+            const duration = 600 * 3; // 600ms * 3 loops = 1800ms
+            const randomDelay = Math.random() * 7000 + 3000; // 3s–10s
+            setTimeout(triggerBounce, duration + randomDelay);
+        }
+
+        setTimeout(triggerBounce, 4000);
+    });
+
 });
