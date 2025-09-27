@@ -107,19 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- FIX: Correctly handle hover for project items
-    document.querySelectorAll('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
-        let isHovered = false;
-        item.addEventListener('mouseenter', () => {
-            if (!isHovered) {
-                playPitchedHoverSound();
-                isHovered = true;
-            }
+    function attachHoverListeners() {
+        // This code now runs only when called
+        document.querySelectorAll('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
+            let isHovered = false;
+            item.addEventListener('mouseenter', () => {
+                if (!isHovered) {
+                    // Assuming playPitchedHoverSound() is defined elsewhere
+                    if (typeof playPitchedHoverSound === 'function') {
+                        playPitchedHoverSound();
+                    }
+                    isHovered = true;
+                }
+            });
+            item.addEventListener('mouseleave', () => {
+                isHovered = false;
+            });
         });
-        item.addEventListener('mouseleave', () => {
-            isHovered = false;
-        });
-    });
+    }
+    attachHoverListeners();
 
     document.querySelectorAll('.icon-item, .faq-question, .faq-modal').forEach(item => {
         let isHovered = false;
