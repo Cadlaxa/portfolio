@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const interactiveSelectors = `
         a, button, image, input, select, textarea, i, [class="cad-name"],
-        project-item,
+        project-item, .palette,
         [role="button"], [role="link"], [role="checkbox"],
         [role="radio"], [role="switch"], 
         [tabindex]:not([tabindex="-1"]),

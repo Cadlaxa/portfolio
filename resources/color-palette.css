@@ -73,3 +73,23 @@ button.palette-btn:hover {
 .palette[data-palette="purple"] {
     background: #8b5cf6;
 }
+
+.palette[data-palette="red"] {
+    background: #fc5656;
+}
+
+@media (max-width: 600px) {
+    .palette-options {
+        position: fixed;
+        bottom: 15px;
+        left: 55%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2000;
+        transition: opacity 0.3s ease;
+    }
+}

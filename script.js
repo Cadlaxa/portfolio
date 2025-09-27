@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (parentModalContainer) {
                     parentModalContainer.classList.remove('visible');
                 }
+                navigator.vibrate([30])
                 toggleModalBtn.style.display = 'none';
                 activeModal = null;
             }
@@ -401,9 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const navBar = document.querySelector(".nav-bar");
 
         function triggerBounce() {
-            navBar.classList.remove("bouncing");
             void navBar.offsetWidth;
-            navBar.classList.add("bouncing");
 
             const duration = 600 * 3; // 600ms * 3 loops = 1800ms
             const randomDelay = Math.random() * 7000 + 3000; // 3s–10s
