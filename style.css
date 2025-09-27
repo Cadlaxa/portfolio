@@ -863,23 +863,9 @@ body {
 }
 
 /* Custom Scrollbar for Webkit Browsers */
-::-webkit-scrollbar {
-  width: 10px;
-  transition: 1.3s ease-in-out;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--orange);
-  border-radius: 10px;
-  transition: 1.3s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--orangeD, #fa8b4b);
+html {
+  scrollbar-width: auto;
+  scrollbar-color: var(--orange) #00000000;
 }
 
 .toggle-modal-btn {
