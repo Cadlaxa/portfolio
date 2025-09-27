@@ -6,7 +6,7 @@ button.palette-btn {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: var(--orange);
+    background: var(--orange); 
     color: white;
     font-size: 22px;
     border: none;
@@ -17,9 +17,8 @@ button.palette-btn {
 }
 
 button.palette-btn:hover {
-    transform: translateY(-5px);
     background-color: var(--orangeD, #fa8b4b);
-
+    transform: translateY(-5px);
 }
 
 /* Palette options container */

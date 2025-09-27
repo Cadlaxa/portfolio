@@ -1,0 +1,90 @@
+[
+  {
+    "title": "OPENUTAU",
+    "description": "Open singing synthesis platform / Open source UTAU successor.",
+    "link": "https://github.com/stakira/OpenUtau",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "VB: Shizuma Saito",
+    "description": "English, Japanese, and Filipino UTAU Concatenative voicebank",
+    "link": "https://cadlaxa.github.io/Shizuma-Saito-site/",
+    "buttonText": "View Voicebank"
+  },
+  {
+    "title": "OU Dictionary Editor",
+    "description": "Python GUI that can read and parse YAML, JSON, Sphinx format and more",
+    "link": "https://github.com/Cadlaxa/OpenUtau-Dictionary-Editor",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "OU G2P Tester",
+    "description": "Python CLI for testing onnx g2p (Grapheme to Phoneme) models",
+    "link": "https://github.com/Cadlaxa/OU-Grapheme-to-Phoneme-Tester",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "ARPAsing+ Phonemizers",
+    "description": "Archive sample of Syllable Based ARPAsing Phonemizer",
+    "link": "https://github.com/Cadlaxa/Syllable-Based-ARPAsing-Phonemizer",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "Kasane Teto Dedicated Phonemizer",
+    "description": "Syllabld Based Phonemizer that combines Japanese and English aliases in one + YAML customizable format",
+    "link": "https://docs.google.com/document/d/1Ie4KxzmATXbVjf_8RT3uN5Gx67tMaLFgXExYLDUUp-w/edit?pli=1&tab=t.0",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "EN2JA+ Phonemizer",
+    "description": "Customizable Phonemizer for Japanese banks to make them sing in English",
+    "link": "https://docs.google.com/document/d/1lh-UqqkTr4P7fpLhtSo3Jf9SCD58kjfiGPtdBSc8ciI/edit?tab=t.0",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "Local Database Manager",
+    "description": "Java local database manager and data editor that uses CSV files for storing and creating data",
+    "link": "https://github.com/Cadlaxa/Local-Database-Manager",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "2048 retro",
+    "description": "Java command line program (non-gui game) with interactive controls and sfx",
+    "link": "https://github.com/Cadlaxa/Java-CL-based-Game",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "ARTI-san",
+    "description": "Tkinter GUI for a Point-of-Sale anime figurines for school project. Stores customer data in yaml format",
+    "link": "https://github.com/Cadlaxa/POS-tkinter-GUI",
+    "buttonText": "View Project"
+  },
+  {
+    "title": "CVSU Alumni Profile",
+    "description": "School project for creating an Alumni profile website",
+    "link": "https://cadlaxa.github.io/CvSU-Alumni-Profile/",
+    "buttonText": "View Site",
+    "secondaryLink": "https://github.com/Cadlaxa/CvSU-Alumni-Profile",
+    "secondaryButtonText": "View Source"
+  },
+  {
+    "title": "Lax's Boulangerie et Patisserie",
+    "description": "Python CLI receipt system, manual/automatic",
+    "link": "https://github.com/Cadlaxa/Cash-register",
+    "buttonText": "View Source"
+  },
+  {
+    "title": "Managing and Caring for Yourself",
+    "description": "Group project website based on self care",
+    "link": "https://cadlaxa.github.io/Managing-and-Caring-for-Yourself-Site/",
+    "buttonText": "View Site",
+    "secondaryLink": "https://github.com/Cadlaxa/Managing-and-Caring-for-Yourself-Site",
+    "secondaryButtonText": "View Source"
+  },
+  {
+    "title": "Other Projects",
+    "description": "My other projects listed here",
+    "link": "https://github.com/Cadlaxa?tab=repositories",
+    "buttonText": "View Repo"
+  }
+]
