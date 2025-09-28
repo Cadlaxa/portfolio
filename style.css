@@ -439,6 +439,106 @@ body {
   transition: background-color 0.2s ease;
 }
 
+.icon-about, .icon-links, .icon-projects, .icon-faq, .icon-contacts {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.icon-about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);  /* Fill color */
+  mask: url('resources/svg/icon_about.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_about.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+.icon-about::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-orange); /* Outline color */
+  mask: url('resources/svg/icon_about_l.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_about_l.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+.icon-links::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);  /* Fill color */
+  mask: url('resources/svg/icon_links.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_links.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+.icon-links::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-orange); /* Outline color */
+  mask: url('resources/svg/icon_links_l.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_links_l.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+.icon-projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);  /* Fill color */
+  mask: url('resources/svg/icon_projects.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_projects.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+.icon-projects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-orange); /* Outline color */
+  mask: url('resources/svg/icon_projects_l.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_projects_l.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+.icon-faq::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);  /* Fill color */
+  mask: url('resources/svg/icon_faq.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_faq.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+.icon-faq::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-orange); /* Outline color */
+  mask: url('resources/svg/icon_faq_l.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_faq_l.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+.icon-contacts::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);  /* Fill color */
+  mask: url('resources/svg/icon_contacts.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_contacts.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+.icon-contacts::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-orange); /* Outline color */
+  mask: url('resources/svg/icon_contacts_l.svg') no-repeat center / contain;
+  -webkit-mask: url('resources/svg/icon_contacts_l.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
 /*.icon-item:hover .icon {
   background-color: var(--orangeHL);
 }*/
