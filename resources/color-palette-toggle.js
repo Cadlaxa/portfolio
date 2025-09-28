@@ -151,6 +151,4 @@ function applyTheme(name) {
     for (let key in themeVars) {
         document.documentElement.style.setProperty(key, themeVars[key]);
     }
-    document.documentElement.style.setProperty('--palette-btn-default', themeVars["--orange"]);
-    document.documentElement.style.setProperty('--palette-btn-hover', themeVars["--orangeD"]);
 }

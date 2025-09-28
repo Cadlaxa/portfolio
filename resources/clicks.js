@@ -107,16 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function attachHoverListeners() {
-        // This code now runs only when called
+    window.attachHoverListeners = function () {
         document.querySelectorAll('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
             let isHovered = false;
             item.addEventListener('mouseenter', () => {
                 if (!isHovered) {
-                    // Assuming playPitchedHoverSound() is defined elsewhere
-                    if (typeof playPitchedHoverSound === 'function') {
-                        playPitchedHoverSound();
-                    }
+                    playPitchedHoverSound();
                     isHovered = true;
                 }
             });
@@ -124,8 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isHovered = false;
             });
         });
-    }
-    attachHoverListeners();
+    };
 
     document.querySelectorAll('.icon-item, .faq-question, .faq-modal').forEach(item => {
         let isHovered = false;

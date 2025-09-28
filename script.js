@@ -232,64 +232,153 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', drag);
     document.addEventListener('touchmove', drag);
 
-    // --- Resizable Window Functionality ---
-    let activeResizable = null;
-    let startX, startY, startWidth, startHeight;
+    (function () {
+        // ensure handles exist
+        document.querySelectorAll('.modal-window-base').forEach(modal => {
+            if (!modal.querySelector('.resize-handle')) {
+                const handle = document.createElement('div');
+                handle.className = 'resize-handle';
+                modal.appendChild(handle);
+            }
+        });
 
-    function resizeStart(e) {
-        const modalWindow = e.target.closest('.modal-window');
-        if (!modalWindow || !e.target.classList.contains('resize-handle')) return;
+        let resizing = false;
+        let resizeEl = null;
+        let startX = 0,
+            startY = 0,
+            startW = 0,
+            startH = 0,
+            startLeft = 0,
+            startTop = 0;
 
-        e.preventDefault();
+        const MIN_WIDTH = 400;
+        const MIN_HEIGHT = window.innerHeight * 0.30;
+        const MAX_HEIGHT = window.innerHeight * 0.90;
+        const EDGE_PADDING = 20;
 
-        activeResizable = modalWindow;
-        activeResizable.classList.add('is-resizing');
-
-        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
-
-        startX = clientX;
-        startY = clientY;
-        startWidth = activeResizable.offsetWidth;
-        startHeight = activeResizable.offsetHeight;
-
-        activeResizable.style.cursor = 'nwse-resize';
-        bringToFront(activeResizable);
-    }
-
-    function resizeEnd() {
-        if (activeResizable) {
-            activeResizable.classList.remove('is-resizing');
-            activeResizable.style.cursor = 'grab';
-            activeResizable = null;
+        function getCoords(ev) {
+            return {
+                clientX: ev.clientX !== undefined ? ev.clientX : (ev.touches ? ev.touches[0].clientX : (ev.changedTouches ? ev.changedTouches[0].clientX : 0)),
+                clientY: ev.clientY !== undefined ? ev.clientY : (ev.touches ? ev.touches[0].clientY : (ev.changedTouches ? ev.changedTouches[0].clientY : 0))
+            };
         }
-    }
 
-    function resize(e) {
-        if (!activeResizable) return;
+        function onDown(ev) {
+            const targetHandle = ev.target.closest?.('.resize-handle');
+            if (!targetHandle) return;
+            ev.preventDefault?.();
 
-        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+            const base = targetHandle.closest('.modal-window-base');
+            if (!base) return;
 
-        const width = startWidth + clientX - startX;
-        const height = startHeight + clientY - startY;
+            // bring parent modal-window to front
+            const parentWindow = base.closest('.modal-window');
+            if (parentWindow) bringToFront(parentWindow);
 
-        const minWidth = 300;
-        const minHeight = 200;
+            // get rect of the base
+            const rect = base.getBoundingClientRect();
+            const coords = getCoords(ev);
 
-        activeResizable.style.width = `${Math.max(minWidth, width)}px`;
-        activeResizable.style.height = `${Math.max(minHeight, height)}px`;
-    }
+            startX = coords.clientX;
+            startY = coords.clientY;
+            startW = rect.width;
+            startH = rect.height;
+            startLeft = rect.left;
+            startTop = rect.top;
 
-    document.querySelectorAll('.modal-window .resize-handle').forEach(handle => {
-        handle.addEventListener('mousedown', resizeStart);
-        handle.addEventListener('touchstart', resizeStart);
-    });
+            resizeEl = base;
+            resizing = true;
 
-    document.addEventListener('mouseup', resizeEnd);
-    document.addEventListener('touchend', resizeEnd);
-    document.addEventListener('mousemove', resize);
-    document.addEventListener('touchmove', resize);
+            if (parentWindow) parentWindow.classList.add('is-resizing');
+
+            document.body.style.cursor = 'nwse-resize';
+            if (ev.pointerId && typeof targetHandle.setPointerCapture === 'function') {
+                try {
+                    targetHandle.setPointerCapture(ev.pointerId);
+                } catch (_) {}
+            }
+        }
+
+        function onMove(ev) {
+            if (!resizing || !resizeEl) return;
+            ev.preventDefault && ev.preventDefault();
+
+            const coords = getCoords(ev);
+            const dx = coords.clientX - startX;
+            const dy = coords.clientY - startY;
+
+            let newW = Math.round(startW + dx);
+            let newH = Math.round(startH + dy);
+
+            // clamp to viewport bounds
+            const maxW = Math.max(MIN_WIDTH, window.innerWidth - startLeft - EDGE_PADDING);
+            const maxH = Math.max(MIN_HEIGHT, window.innerHeight - startTop - EDGE_PADDING);
+
+            newW = Math.max(MIN_WIDTH, Math.min(maxW, newW));
+            newH = Math.max(MIN_HEIGHT, Math.min(maxH, newH));
+
+            resizeEl.style.width = `${newW}px`;
+            resizeEl.style.height = `${newH}px`;
+
+            // 🔹 update .modal-content max-height dynamically
+            const modalContent = resizeEl.querySelector('.modal-content');
+            if (modalContent) {
+                // give padding space (~40px or use computed)
+                modalContent.style.maxHeight = `${newH - 40}px`;
+            }
+        }
+
+        function onUp(ev) {
+            if (!resizing) return;
+            resizing = false;
+
+            try {
+                if (ev.pointerId && ev.target && typeof ev.target.releasePointerCapture === 'function') {
+                    ev.target.releasePointerCapture(ev.pointerId);
+                }
+            } catch (_) {}
+
+            if (resizeEl) {
+                const parentWindow = resizeEl.closest('.modal-window');
+                if (parentWindow) {
+                    setTimeout(() => {
+                        parentWindow.classList.remove('is-resizing');
+                        void parentWindow.offsetWidth;
+                    }, 40);
+                }
+                resizeEl = null;
+            }
+            document.body.style.cursor = '';
+        }
+
+
+        // attach listeners
+        document.querySelectorAll('.modal-window-base .resize-handle').forEach(handle => {
+            handle.addEventListener('pointerdown', onDown, {
+                passive: false
+            });
+        });
+        window.addEventListener('pointermove', onMove, {
+            passive: false
+        });
+        window.addEventListener('pointerup', onUp);
+        window.addEventListener('pointercancel', onUp);
+
+        // touch fallback
+        if (!window.PointerEvent) {
+            document.querySelectorAll('.modal-window-base .resize-handle').forEach(handle => {
+                handle.addEventListener('touchstart', ev => onDown(ev.touches[0]), {
+                    passive: false
+                });
+            });
+            window.addEventListener('touchmove', ev => onMove(ev.touches[0]), {
+                passive: false
+            });
+            window.addEventListener('touchend', ev => onUp(ev.changedTouches ? ev.changedTouches[0] : ev), {
+                passive: false
+            });
+        }
+    })();
 
     if (window.innerWidth <= 768) {
         const allIconItems = document.querySelectorAll('.icon-item');
@@ -311,7 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
     setupFaqDropdown();
 
 
