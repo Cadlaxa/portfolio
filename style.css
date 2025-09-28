@@ -322,14 +322,11 @@ body {
   color: #fff;
   text-align: left;
   display: flex;
-  /* Added for draggable handle */
   justify-content: space-between;
-  /* Added for close button positioning */
   align-items: center;
-  /* Added for close button positioning */
   cursor: grab;
-  /* Indicates draggable */
 }
+
 
 .window-title {
   font-weight: 550;
@@ -568,6 +565,7 @@ body {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  cursor: auto;
 }
 
 /* About */
@@ -614,7 +612,6 @@ body {
   line-height: clamp(1.3em, 4vw, 1.5em);
   text-align: center;
 }
-
 
 .profile-name p {
   margin: -10px;
@@ -925,7 +922,7 @@ html {
 
 .toggle-modal-btn {
   position: fixed;
-  bottom: 115px;
+  bottom: 120px;
   left: 10px;
   width: 45px;
   height: 45px;

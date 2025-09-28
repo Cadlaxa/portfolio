@@ -129,13 +129,20 @@ paletteBtn.addEventListener('click', () => {
 palettes.forEach(palette => {
     palette.addEventListener('click', () => {
         const choice = palette.dataset.palette;
+
+        const paletteIcon = paletteBtn.querySelector("i");
+        paletteIcon.classList.add("switching");
         applyTheme(choice);
+        setTimeout(() => {
+            paletteIcon.classList.remove("switching");
+        }, 800); // sync with CSS transition
         const randomSFX = sfxSelects[Math.floor(Math.random() * sfxSelects.length)];
         playSound(randomSFX);
         document.cookie = `theme=${choice}; path=/; max-age=31536000`; // 1 year
         paletteOptions.classList.remove('show');
     });
 });
+
 
 // Load theme from cookies on startup
 window.addEventListener('load', () => {

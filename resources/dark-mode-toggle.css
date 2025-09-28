@@ -1,22 +1,30 @@
 /* styling for dark mode toggle button */
-div.dark-mode-toggle {
-    position: fixed; 
-    bottom: 10px; 
-    left: 10px; 
-    z-index: 2000; 
-    cursor: pointer; 
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     background: var(--orange); 
-    color: #ffffff; 
-    padding: 10px; 
-    border-radius: 50%; 
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: filter 1.8s ease;
-    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.2s ease-in-out;
+    z-index: 2000;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out;
+    display: inline-block;
 }
 
 
-div.dark-mode-toggle:hover {
+.dark-mode-toggle:hover {
     background-color: var(--orangeD, #fa8b4b);
     transform: translateY(-5px);
     transition: background-color .2s, transform .2s, color .2s;
+}
+
+.dark-mode-toggle i.switching {
+  transform: rotate(360deg) scale(1.2);
+  opacity: 0;
 }

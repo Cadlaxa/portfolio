@@ -1,7 +1,7 @@
 /* Palette button */
 button.palette-btn {
     position: fixed;
-    bottom: 60px;
+    bottom: 65px;
     left: 10px;
     width: 45px;
     height: 45px;
@@ -13,12 +13,27 @@ button.palette-btn {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 2000;
-    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out opacity 0.3s ease;
+    display: inline-block;
 }
 
 button.palette-btn:hover {
     background-color: var(--orangeD, #fa8b4b);
     transform: translateY(-5px);
+}
+
+@keyframes waveBrush {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-30deg); }
+    40%  { transform: rotate(25deg); }
+    60%  { transform: rotate(-20deg); }
+    80%  { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+}
+
+button.palette-btn i.switching {
+    animation: waveBrush 0.8s ease-in-out;
+    transform-origin: bottom center; /* pivot like a paintbrush */
 }
 
 /* Palette options container */

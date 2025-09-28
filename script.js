@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', drag);
     document.addEventListener('touchmove', drag);
 
+    // --- Resizeavle Window Functionality ---
     (function () {
         // ensure handles exist
         document.querySelectorAll('.modal-window-base').forEach(modal => {
