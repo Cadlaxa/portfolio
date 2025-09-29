@@ -1082,7 +1082,7 @@ html {
   background-color: var(--orangeHL);
   border-radius: var(--radius);
   margin-bottom: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all ease-in-out 0.3s;
 }
 
 .faq-item:hover {
