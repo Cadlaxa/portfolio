@@ -1,0 +1,55 @@
+/* Master toggle button */
+.master-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--orange); 
+    color: white;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.master-toggle:hover {
+    background-color: var(--orangeD, #fa8b4b);
+    transform: translateY(-5px);
+}
+
+/* Master toggle rotation (simplified) */
+.master-toggle i {
+    display: inline-block;
+    transition: transform 0.4s ease-in-out;
+}
+.master-toggle i.rotated {
+    transform: rotate(180deg);
+}
+
+/* Extra buttons container */
+.extra-buttons {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    gap: 10px;
+    opacity: 1;
+    pointer-events: none;
+    transform: translateX(-70px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1500;
+}
+
+/* Show state */
+.extra-buttons.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}

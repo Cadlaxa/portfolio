@@ -7,12 +7,6 @@ const sfxSelects = [
     new Audio('resources/sfx/color1.mp3')
 ];
 
-function playSound(audioElement) {
-    audioElement.pause();
-    audioElement.currentTime = 0;
-    audioElement.play().catch(e => console.log("Audio playback failed:", e));
-}
-
 // Palette variable sets
 const themes = {
     orange: {
@@ -59,7 +53,7 @@ const themes = {
         "--ptext": "#053427",
         "--light-gray": "#f7fff9",
         "--dark-gray": "#063e2f",
-        "--icon-drop-shadow": "rgba(52, 211, 153, 0.22)",
+        "--icon-drop-shadow": "#64bd9c",
         "--light-orange": "#f0fff7",
         "--light-orange1": "#f0fff7",
         "--dark-orange": "#053427", // Dark Green
@@ -94,7 +88,7 @@ const themes = {
         "--ptext": "#2e1065",
         "--light-gray": "#faf5ff",
         "--dark-gray": "#4c1d95",
-        "--icon-drop-shadow": "rgba(139, 92, 246, 0.25)",
+        "--icon-drop-shadow": "#8f6fd6",
         "--light-orange": "#f3e8ff",
         "--light-orange1": "#faf5ff",
         "--dark-orange": "#3b0764", // Dark Purple

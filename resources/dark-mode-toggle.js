@@ -6,21 +6,19 @@ const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
 
 let currentMode = null;
 
-function toggleDarkMode(newState, playSound = true, updateCookie = true) {
+function toggleDarkMode(newState, shouldPlaySound = true, updateCookie = true) {
     const toggleIcon = document.querySelector(".dark-mode-toggle i");
 
     // Trigger animation class
     toggleIcon.classList.add("switching");
 
-    // Wait for animation before swapping the icon
     setTimeout(() => {
         if (newState === "on" && currentMode !== "on") {
             DarkReader.enable({ contrast: 110 });
             toggleIcon.className = "fa-solid fa-sun";
 
-            if (playSound) {
-                darkModeSound.currentTime = 0;
-                darkModeSound.play();
+            if (shouldPlaySound) {
+                playSound(darkModeSound);
             }
             if (updateCookie) setCookie("darkmode", "on", 9999);
 
@@ -30,9 +28,8 @@ function toggleDarkMode(newState, playSound = true, updateCookie = true) {
             DarkReader.disable();
             toggleIcon.className = "fa-solid fa-moon";
 
-            if (playSound) {
-                lightModeSound.currentTime = 0;
-                lightModeSound.play();
+            if (shouldPlaySound) {
+                playSound(lightModeSound);
             }
             if (updateCookie) setCookie("darkmode", "off", 9999);
 
@@ -40,7 +37,7 @@ function toggleDarkMode(newState, playSound = true, updateCookie = true) {
         }
 
         toggleIcon.classList.remove("switching");
-    }, 300); 
+    }, 300);
 }
 
 

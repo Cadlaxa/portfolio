@@ -428,7 +428,7 @@ body {
 .icon-item:hover {
   transform: translateY(-5px);
   background-color: var(--orangeL);
-  box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px var(--orange);
 }
 
 .icon-item .icon {
@@ -443,7 +443,26 @@ body {
   position: relative;
   width: 60px;
   height: 60px;
+  filter: drop-shadow(3px 3px 0px var(--icon-drop-shadow));
+  transition: all 0.2s ease;
 }
+
+.icon-item:hover .icon-about, 
+.icon-item:hover .icon-links, 
+.icon-item:hover .icon-projects, 
+.icon-item:hover .icon-faq, 
+.icon-item:hover .icon-contacts {
+  filter: drop-shadow(0px 0px 0px var(--icon-drop-shadow));
+}
+
+.icon-item:hover .icon-about::before, 
+.icon-item:hover .icon-links::before, 
+.icon-item:hover .icon-projects::before, 
+.icon-item:hover .icon-faq::before, 
+.icon-item:hover .icon-contacts::before {
+  background-color: var(--orangeL1);
+}
+
 .icon-about::before {
   content: "";
   position: absolute;
@@ -1022,7 +1041,7 @@ html {
 
 .toggle-modal-btn {
   position: fixed;
-  bottom: 120px;
+  bottom: 230px;
   left: 10px;
   width: 45px;
   height: 45px;

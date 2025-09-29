@@ -1,12 +1,12 @@
 /* Palette button */
 button.palette-btn {
     position: fixed;
-    bottom: 65px;
+    bottom: 120px;
     left: 10px;
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: var(--orange); 
+    background: var(--orange);
     color: white;
     font-size: 22px;
     border: none;
@@ -23,36 +23,56 @@ button.palette-btn:hover {
 }
 
 @keyframes waveBrush {
-    0%   { transform: rotate(0deg); }
-    20%  { transform: rotate(-30deg); }
-    40%  { transform: rotate(25deg); }
-    60%  { transform: rotate(-20deg); }
-    80%  { transform: rotate(8deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-30deg);
+    }
+
+    40% {
+        transform: rotate(25deg);
+    }
+
+    60% {
+        transform: rotate(-20deg);
+    }
+
+    80% {
+        transform: rotate(8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 button.palette-btn i.switching {
     animation: waveBrush 0.8s ease-in-out;
-    transform-origin: bottom center; /* pivot like a paintbrush */
+    transform-origin: bottom center;
+    /* pivot like a paintbrush */
 }
 
 /* Palette options container */
 .palette-options {
     position: fixed;
-    bottom: 30vh;
-    left: 15px;
+    bottom: 15px;
+    left: 70px;
+    transform: translateY(150%);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     z-index: 2000;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .palette-options.show {
     opacity: 1;
     pointer-events: auto;
+    transform: translateY(0%);
 }
 
 .palette {
@@ -96,14 +116,14 @@ button.palette-btn i.switching {
     .palette-options {
         position: fixed;
         bottom: 15px;
-        left: 55%;
-        transform: translateX(-50%);
+        left: 20%;
+        transform: translateY(150%);
         display: flex;
         flex-direction: row;
         gap: 10px;
-        opacity: 0;
+        opacity: 1;
         pointer-events: none;
         z-index: 2000;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
     }
 }
