@@ -245,14 +245,21 @@ body {
   width: 18px;
   height: 18px;
   cursor: nwse-resize;
-  border-right: 3px solid var(--orange);
-  border-bottom: 3px solid var(--orange);
+  border-right: 4px solid var(--orange);
+  border-bottom: 4px solid var(--orange);
   background: transparent;
   border-radius: 3px;
   z-index: 500;
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
+  transform: all 0.2s ease-in-out;
+}
+
+.modal-window-base .resize-handle:hover {
+  border-right: 4px solid var(--orangeD);
+  border-bottom: 4px solid var(--orangeD);
+  transform: scale(1.2);
 }
 
 /* Invisible larger hit area so it's easier to grab on mobile */
@@ -953,7 +960,7 @@ body {
   font-size: 3em;
   color: var(--orange);
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease filter 0.3 ease;
-  filter: drop-shadow(4px 4px 0px var(--icon-drop-shadow));
+  filter: drop-shadow(3px 3px 0px var(--icon-drop-shadow));
   text-shadow:
     -1.5px -1.5px 0px var(--dark-orange1),
     /* Top-left */

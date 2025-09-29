@@ -214,7 +214,8 @@ function playPitchedHoverSound() {
 }
 
 window.attachHoverListeners = function () {
-    document.querySelectorAll('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
+    document.querySelectorAll
+        ('.project-item, .link-item, .icon-item, .faq-question, .skill-tag').forEach(item => {
         let isHovered = false;
         item.addEventListener('mouseenter', () => {
             if (!isHovered) {
