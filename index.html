@@ -526,8 +526,38 @@
             </div>
           </div>
           <div class="about-section">
-            <h3>wip</h3>
+              <p>work email: <a href="mailto:cactusmusic30@gmail.com" class="cad-name">cactusmusic30@gmail.com</a></p>
+              <form id="contact-form">
+              <div class="form-grid">
+                <input type="text" name="name" placeholder="Your name" required />
+                <input type="email" name="email" placeholder="Your email" required />
+                <input type="text" name="subject" placeholder="Subject" required />
+                <textarea name="message" placeholder="What's up?" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Submit</button>
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
 
+  <!-- Submitted card -->
+  <div id="submit-modal" class="modal-container">
+    <div class="modal-window">
+      <div class="modal-window-base modal-submit">
+        <div class="window-header handle">
+          <span class="window-title">Status</span>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content ">
+          <div class="profile-container">
+            <div class="profile-header">
+              <div class="profile-name">
+                <h1><span class="cad-name">Sent!</span></h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -537,7 +567,9 @@
 
   </script>
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="resources/dark-mode-toggle.js"></script>
+  <script src="resources/email-submit.js"></script>
   <script src="resources/clicks.js"></script>
   <script src="resources/color-palette-toggle.js"></script>
   <script src="resources/projects.js"></script>

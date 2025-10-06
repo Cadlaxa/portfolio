@@ -308,7 +308,12 @@ body {
 }
 
 .modal-contacts {
+  width: 600px;
+}
+
+.modal-submit {
   width: 400px;
+  z-index: 3000;
 }
 
 .window-frame {
@@ -1135,6 +1140,71 @@ html {
   text-align: left;
   color: var(--ptext);
 }
+
+/* Contacts */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+
+.form-grid input,
+.form-grid textarea {
+  background-color: var(--light-orange);
+  border: 2px solid var(--orangeL1);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  transition: border 0.2s ease;
+  width: 100%;
+  transition: all 0.2S ease-in-out;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border-color: var(--orange);
+  background-color: var(--orangeHL);
+}
+
+/* Make textarea span full width */
+.form-grid textarea {
+  grid-column: span 2;
+  min-height: 80px;
+}
+
+.submit-btn {
+  background: var(--orange);
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+  background: var(--orangeD);
+  transform: translateY(-3px);
+}
+
+#submit-modal.visible {
+  display: flex;
+  opacity: 1;
+}
+
 
 @media (max-width: 992px) {
 
