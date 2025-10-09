@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const submitModal = document.getElementById("submit-modal");
+  const errorModal = document.getElementById("error-modal");
+  const errorMessageBox = errorModal.querySelector(".error-message");
+  const closeButtons = document.querySelectorAll(".close-btn");
 
   // Initialize EmailJS
   emailjs.init("KK-n3Gc61dVOEZLaF");
@@ -29,23 +32,39 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.status === 200) {
-        // Show submitted modal
-        submitModal.classList.add("visible"); // Add a "visible" or "show" class
+        submitModal.classList.add("visible");
         navigator.vibrate?.([50, 150, 50]);
         form.reset();
       } else {
-        alert("Something went wrong. Please try again later.");
+        showError(`Unexpected response from server: ${response.status}`);
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Failed to send message. Check your connection or EmailJS settings.");
+      showError(
+        error?.text ||
+        error?.message ||
+        "Failed to send message. Check your connection"
+      );
     }
+  });
+
+  function showError(message) {
+    errorMessageBox.textContent = message;
+    errorModal.classList.add("visible");
+    navigator.vibrate?.([50, 150, 50]);
+  }
+
+  // Close modals when clicking the × button
+  closeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".modal-container").classList.remove("visible");
+    });
   });
 
   // Optional: close modal when clicking outside
   window.addEventListener("click", (e) => {
-    if (e.target === submitModal) {
-      submitModal.style.display = "none";
+    if (e.target === submitModal || e.target === errorModal) {
+      e.target.classList.remove("visible");
     }
   });
 });

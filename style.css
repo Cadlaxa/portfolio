@@ -316,6 +316,11 @@ body {
   z-index: 3000;
 }
 
+.modal-error {
+  width: 400px;
+  z-index: 3000;
+}
+
 .window-frame {
   width: 800px;
   max-width: 90vw;
@@ -740,6 +745,14 @@ body {
 .profile-name h1 {
   margin: 0;
   font-size: 3em;
+  line-height: clamp(1.3em, 4vw, 1.5em);
+  text-align: center;
+}
+
+.profile-name i {
+  margin: 20;
+  font-size: 5em;
+  color: var(--orange);
   line-height: clamp(1.3em, 4vw, 1.5em);
   text-align: center;
 }
@@ -1331,6 +1344,10 @@ html {
     object-fit: cover;
     margin-right: -10%;
     margin-left: 10%;
+  }
+
+  .profile-name i {
+    font-size: 4em;
   }
 
   .profile-name h1 {
