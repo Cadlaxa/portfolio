@@ -24,7 +24,8 @@ const themes = {
         "--light-orange1": "#fffbf4",
         "--dark-orange": "#6e4800",
         "--dark-orange1": "#cb682e",
-        "--mobile-icon-item": "#ffeed0c5"
+        "--mobile-icon-item": "#ffeed0c5",
+        "--cursor": "#ffeed050"
     },
     blue: {
         "--yellow": "#e0f2fe",
@@ -41,7 +42,8 @@ const themes = {
         "--light-orange1": "#f0f9ff",
         "--dark-orange": "#1e3a8a", // Dark Blue
         "--dark-orange1": "#2563eb",
-        "--mobile-icon-item": "#c2dcffc5" // Transparent Blue Highlight
+        "--mobile-icon-item": "#c2dcffc5", // Transparent Blue Highlight
+        "--cursor": "#c2dcff50"
     },
     green: {
         "--yellow": "#e6f9df",
@@ -58,7 +60,8 @@ const themes = {
         "--light-orange1": "#f0fff7",
         "--dark-orange": "#053427", // Dark Green
         "--dark-orange1": "#059669",
-        "--mobile-icon-item": "#c5fcd8c5" // Transparent Green Highlight
+        "--mobile-icon-item": "#c5fcd8c5", // Transparent Green Highlight
+        "--cursor": "#c5fcd850"
     },
 
     pink: {
@@ -76,7 +79,8 @@ const themes = {
         "--light-orange1": "#fff0f7",
         "--dark-orange": "#831843", // Dark Pink
         "--dark-orange1": "#be185d",
-        "--mobile-icon-item": "#fccce8c5" // Transparent Pink Highlight
+        "--mobile-icon-item": "#fccce8c5", // Transparent Pink Highlight
+        "--cursor": "#fccce850"
     },
     purple: {
         "--yellow": "#f5e1ff",
@@ -93,7 +97,8 @@ const themes = {
         "--light-orange1": "#faf5ff",
         "--dark-orange": "#3b0764", // Dark Purple
         "--dark-orange1": "#7c3aed",
-        "--mobile-icon-item": "#d8cffcc5" // Transparent Purple Highlight
+        "--mobile-icon-item": "#d8cffcc5", // Transparent Purple Highlight
+        "--cursor": "#d8cffc50"
     },
     red: {
         "--yellow": "#ffeeee",      // Lightest accent
@@ -110,7 +115,8 @@ const themes = {
         "--light-orange1": "#fffafa",
         "--dark-orange": "#7f1d1d", // Dark Red
         "--dark-orange1": "#dc2626",
-        "--mobile-icon-item": "#fabebec5" // Transparent Red Highlight
+        "--mobile-icon-item": "#fabebec5", // Transparent Red Highlight
+        "--cursor": "#fabebe50"
     }
 };
 
