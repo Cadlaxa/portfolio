@@ -2,24 +2,28 @@
   {
     "title": "OPENUTAU",
     "description": "Open singing synthesis platform / Open source UTAU successor.",
+    "banner": "resources/projects/openutau.webp",
     "link": "https://github.com/stakira/OpenUtau",
     "buttonText": "View Project"
   },
   {
     "title": "VB: Shizuma Saito",
     "description": "English, Japanese, and Filipino UTAU Concatenative voicebank",
+    "banner": "resources/projects/saito.webp",
     "link": "https://cadlaxa.github.io/Shizuma-Saito-site/",
     "buttonText": "View Voicebank"
   },
   {
     "title": "OU Dictionary Editor",
     "description": "Python GUI that can read and parse YAML, JSON, Sphinx format and more",
+    "banner": "resources/projects/ou-dict.webp",
     "link": "https://github.com/Cadlaxa/OpenUtau-Dictionary-Editor",
     "buttonText": "View Project"
   },
   {
     "title": "OU G2P Tester",
     "description": "Python CLI for testing onnx g2p (Grapheme to Phoneme) models",
+    "banner": "resources/projects/grapheme2phoneme.webp",
     "link": "https://github.com/Cadlaxa/OU-Grapheme-to-Phoneme-Tester",
     "buttonText": "View Project"
   },
@@ -44,24 +48,28 @@
   {
     "title": "Local Database Manager",
     "description": "Java local database manager and data editor that uses CSV files for storing and creating data",
+    "banner": "resources/projects/local-database-manager.webp",
     "link": "https://github.com/Cadlaxa/Local-Database-Manager",
     "buttonText": "View Project"
   },
   {
     "title": "2048 retro",
     "description": "Java command line program (non-gui game) with interactive controls and sfx",
+    "banner": "resources/projects/2048-retro.webp",
     "link": "https://github.com/Cadlaxa/Java-CL-based-Game",
     "buttonText": "View Project"
   },
   {
     "title": "ARTI-san",
     "description": "Tkinter GUI for a Point-of-Sale anime figurines for school project. Stores customer data in yaml format",
+    "banner": "resources/projects/artisan.webp",
     "link": "https://github.com/Cadlaxa/POS-tkinter-GUI",
     "buttonText": "View Project"
   },
   {
     "title": "CVSU Alumni Profile",
     "description": "School project for creating an Alumni profile website",
+    "banner": "resources/projects/cvsu-alumni.webp",
     "link": "https://cadlaxa.github.io/CvSU-Alumni-Profile/",
     "buttonText": "View Site",
     "secondaryLink": "https://github.com/Cadlaxa/CvSU-Alumni-Profile",
@@ -70,12 +78,14 @@
   {
     "title": "Lax's Boulangerie et Patisserie",
     "description": "Python CLI receipt system, manual/automatic",
+    "banner": "resources/projects/boulangerie.webp",
     "link": "https://github.com/Cadlaxa/Cash-register",
     "buttonText": "View Source"
   },
   {
     "title": "Managing and Caring for Yourself",
     "description": "Group project website based on self care",
+    "banner": "resources/projects/caring-site.webp",
     "link": "https://cadlaxa.github.io/Managing-and-Caring-for-Yourself-Site/",
     "buttonText": "View Site",
     "secondaryLink": "https://github.com/Cadlaxa/Managing-and-Caring-for-Yourself-Site",

@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // For Mouse
-    boat.addEventListener('mousedown', startDrag);
+    //boat.addEventListener('mousedown', startDrag);
     document.addEventListener('mousemove', moveBoat);
     document.addEventListener('mouseup', endDrag);
 
