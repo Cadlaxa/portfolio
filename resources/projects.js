@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalTitle) {
       modalTitle.textContent = projectTitle || 'Project Banner';
     }
+    navigator.vibrate([30])
     modal.classList.add('visible');
     document.body.style.overflow = 'hidden';
   };
