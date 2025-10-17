@@ -13,13 +13,17 @@ button.palette-btn {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 2000;
-    transition: transform 0.2s ease-in-out, background-color 0.2s ease, display 0.3s ease-in-out opacity 0.3s ease;
+    transition: all 0.2s ease-in-out;
     display: inline-block;
 }
 
 button.palette-btn:hover {
     background-color: var(--orangeD, #fa8b4b);
     transform: translateY(-5px);
+}
+
+button.palette-btn:active {
+    transform: var(--clicky);
 }
 
 @keyframes waveBrush {
@@ -86,6 +90,10 @@ button.palette-btn i.switching {
 
 .palette:hover {
     transform: scale(1.2);
+}
+
+.palette:active {
+    transform: var(--clicky);
 }
 
 .palette[data-palette="orange"] {

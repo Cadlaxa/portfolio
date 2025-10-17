@@ -52,6 +52,8 @@ body {
   --radius1: 20px;
   --mobile-icon-item: #ffeed0c5;
   --cursor: #ffeed050;
+  --clicky: scale(0.95);
+  --clicky1: scale(0.9);
 }
 
 .loading-screen {
@@ -367,6 +369,10 @@ body {
   cursor: grab;
 }
 
+.window-header:active ~ .modal-content,
+.window-header:active ~ .window-content {
+  transform: var(--clicky);
+}
 
 .window-title {
   font-weight: 550;
@@ -469,6 +475,10 @@ body {
   transform: translateY(-5px);
   background-color: var(--orangeL);
   box-shadow: 0 10px 25px var(--orange);
+}
+
+.icon-item:active {
+  transform: var(--clicky1);
 }
 
 .icon-item .icon {
@@ -710,6 +720,10 @@ body {
   background-color: var(--orangeD); 
 }
 
+.close-btn:active {
+  transform: var(--clicky);
+}
+
 .window-header.handle {
   cursor: grab;
 }
@@ -765,6 +779,11 @@ body {
   background-color: var(--orangeL);
 }
 
+.profile-photo:active {
+  transform: translateY(5px);
+  transform: scale(1.0);
+}
+
 .profile-name h1 {
   margin: 0;
   font-size: 3em;
@@ -778,6 +797,10 @@ body {
   color: var(--orange);
   line-height: clamp(1.3em, 4vw, 1.5em);
   text-align: center;
+}
+
+.profile-name:active i {
+  transform: var(--clicky1);
 }
 
 .profile-name p {
@@ -895,6 +918,10 @@ body {
   background-color: var(--light-orange);
 }
 
+.project-item:active {
+  transform: var(--clicky);
+}
+
 .project-header {
   margin-bottom: 10px;
 }
@@ -944,6 +971,10 @@ body {
 
 .project-banner img:not([data-src]) {
   opacity: 1;
+}
+
+.project-banner:active {
+  transform: var(--clicky);
 }
 
 .banner-clickable {
@@ -1007,6 +1038,10 @@ body {
   transform: translateY(-4px);
   background-color: var(--light-orange);
   color: var(--orangeD);
+}
+
+.skill-tag:active {
+  transform: var(--clicky);
 }
 
 /* Links Modal Styling */
@@ -1126,6 +1161,10 @@ body {
   opacity: 1;
 }
 
+.link-item:active {
+  transform: var(--clicky);
+}
+
 /* Custom Scrollbar for Webkit Browsers */
 html {
   scrollbar-width: auto;
@@ -1176,6 +1215,10 @@ html {
   box-shadow: 0 15px 25px var(--orange);
 }
 
+.faq-item:active {
+  transform: var(--clicky);
+}
+
 .faq-question {
   padding: 20px;
   display: flex;
@@ -1188,8 +1231,9 @@ html {
   user-select: none;
 }
 
-.faq-question:hover {
-  color: var(--orangeD);
+
+.faq-question:active {
+  transform: var(--clicky);
 }
 
 .faq-question i {
@@ -1250,6 +1294,11 @@ html {
   transition: all 0.2S ease-in-out;
 }
 
+.form-grid input:active,
+.form-grid textarea:active {
+  transform: var(--clicky);
+}
+
 .form-grid input:focus,
 .form-grid textarea:focus {
   border-color: var(--orange);
@@ -1279,6 +1328,10 @@ html {
 .submit-btn:hover {
   background: var(--orangeD);
   transform: translateY(-3px);
+}
+
+.submit-btn:active {
+  transform: var(--clicky);
 }
 
 #submit-modal.visible {
@@ -1320,6 +1373,7 @@ html {
   .nav-bar:hover {
     opacity: 1;
     transform: translateX(-50%) scale(1.1);
+
   }
 
   .close-btn {

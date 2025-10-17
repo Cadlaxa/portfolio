@@ -24,6 +24,10 @@
     transform: translateY(-5px);
 }
 
+.master-toggle:active {
+    transform: var(--clicky);
+}
+
 /* Master toggle rotation (simplified) */
 .master-toggle i {
     display: inline-block;
