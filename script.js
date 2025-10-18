@@ -381,12 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
 
-    if (window.innerWidth <= 768) {
-        const allIconItems = document.querySelectorAll('.icon-item');
-        allIconItems.forEach(item => {
-            item.style.transform = 'none';
-        });
-    }
 
     // Function to handle the FAQ dropdown
     function setupFaqDropdown() {

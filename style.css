@@ -310,6 +310,8 @@ body {
   border-width: 4px;
   border-style: solid;
   position: relative;
+  /* box-shadow: inset 0 0 20px var(--orangeL); */
+
 }
 
 .modal-frame {
@@ -1169,6 +1171,8 @@ body {
 html {
   scrollbar-width: auto;
   scrollbar-color: var(--orange) #00000000;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease-in-out;
 }
 
 .toggle-modal-btn {
@@ -1373,7 +1377,6 @@ html {
   .nav-bar:hover {
     opacity: 1;
     transform: translateX(-50%) scale(1.1);
-
   }
 
   .close-btn {
