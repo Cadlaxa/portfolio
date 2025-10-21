@@ -92,6 +92,12 @@
     "secondaryButtonText": "View Source"
   },
   {
+    "title": "Arduino Uno Code Collections",
+    "description": "Group and personal projects in Arduino Uno",
+    "link": "https://github.com/Cadlaxa/Arduino-Uno-CC",
+    "buttonText": "View Source"
+  },
+  {
     "title": "Other Projects",
     "description": "My other projects listed here",
     "link": "https://github.com/Cadlaxa?tab=repositories",
