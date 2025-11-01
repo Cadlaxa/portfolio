@@ -494,5 +494,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(triggerBounce, 4000);
     });
-
 });

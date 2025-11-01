@@ -143,7 +143,7 @@
       <div class="window-content">
         <div class="intro-section">
           <h1>hi! i'm <span class="cad-name-special">cadlaxa</span></h1>
-          <p>student, illustrator, and developer</p>
+          <p>student, editor, and developer</p>
         </div>
         <div class="nav-icons">
           <div class="icon-item" data-target="about-modal">
@@ -360,38 +360,75 @@
             <div class="profile-header">
               <div class="profile-name">
                 <h1><span class="cad-name">Current Projects of mine</span></h1>
-                <p><span class="sub-name">located all on my GitHub repository</span></p>
+                <!-- <p><span class="sub-name">located all on my GitHub repository</span></p> -->
               </div>
             </div>
           </div>
-          <div class="about-info-section">
-            <h1><span class="cad-name">Languages</span></h1>
-            <div class="project-skills-container">
-              <span class="skill-tag">C#</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">C++</span>
-              <span class="skill-tag">Markdown</span>
-              <span class="skill-tag">TCL</span>
-              <span class="skill-tag">YAML</span>
-              <span class="skill-tag">XML</span>
-              <span class="skill-tag">JSON</span>
-              <span class="skill-tag">TOML</span>
-              <span class="skill-tag">Rust (learning)</span>
+
+          <div class="about-tabs">
+            <button class="tab-btn active" data-target="codes-sec">Code Projects</button>
+            <button class="tab-btn" data-target="edits-sec">Video Edits</button>
+            <span class="tab-underline"></span>
+          </div>
+
+          <div id="tab-content-wrapper">
+            <div id="codes-sec" class="about-info-section tab-content active" data-loaded="false"></div>
+            <div id="edits-sec" class="about-info-section tab-content" data-loaded="false"></div>
+          </div>
+
+          <template id="codes-sec-template">
+            <div class="about-info-section">
+              <h1><span class="cad-name">Languages</span></h1>
+              <div class="project-skills-container">
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Markdown</span>
+                <span class="skill-tag">TCL</span>
+                <span class="skill-tag">YAML</span>
+                <span class="skill-tag">XML</span>
+                <span class="skill-tag">JSON</span>
+                <span class="skill-tag">TOML</span>
+                <span class="skill-tag">Rust (learning)</span>
+              </div>
             </div>
-          </div>
 
-          <div class="about-info-section">
-            <h1><span class="cad-name">Projects</span></h1>
-            <div class="project-grid-container" id="project-container">
+            <div class="about-info-section">
+              <h1><span class="cad-name">Projects</span></h1>
+                <div class="project-grid-container" id="project-container">
 
-              <!-- Projects will be loaded here by projects.js -->
-               
-          </div>
-          </div>
+                  <!-- Projects will be loaded here by projects.js -->
+                  
+                </div>
+            </div>
+          </template>
+          
+          <template id="edits-sec-template">
+            <div class="about-info-section">
+              <h1><span class="cad-name">Apps I use</span></h1>
+              <div class="project-skills-container">
+                <span class="skill-tag">After Effects</span>
+                <span class="skill-tag">Alight Motion</span>
+                <span class="skill-tag">Photoshop</span>
+                <span class="skill-tag">Illustrator</span>
+                <span class="skill-tag">Infinite Painter</span>
+              </div>
+            </div>
+
+            <div class="about-info-section">
+              <h1><span class="cad-name">Showcase</span></h1>
+                <div class="project-grid-container" id="edits-container">
+
+                  <!-- Projects will be loaded here by edits.js -->
+                  
+                </div>
+            </div>
+          </template>
+
           <div class="nav-bar"></div>
         </div>
       </div>
@@ -623,6 +660,7 @@
   <script src="resources/projects.js"></script>
   <script src="resources/master-toggle.js"></script>
   <script src="resources/color-palette-toggle.js"></script>
+  <script src="resources/tabs.js"></script>
   <script src="resources/cursor.js"></script>
   </script>
 
