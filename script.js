@@ -79,15 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const parentModalContainer = button.closest('.modal-container');
             if (window.innerWidth > 600) {
-                closeButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const parentModalContainer = button.closest('.modal-container');
-                        if (parentModalContainer) {
-                            parentModalContainer.classList.remove('visible');
-                        }
-                        toggleModalBtn.style.display = 'none';
-                        activeModal = null;
-                    });
+                button.addEventListener('click', () => {
+                    const parentModalContainer = button.closest('.modal-container');
+                    if (parentModalContainer) {
+                        parentModalContainer.classList.remove('visible');
+                    }
+                    toggleModalBtn.style.display = 'none';
+                    activeModal = null;
                 });
             }
 
@@ -131,10 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalWindow) {
             modalWindow.addEventListener('transitionend', (e) => {
                 if (e.propertyName === 'transform' && !container.classList.contains('visible')) {
-                    modalWindow.style.left = '';
-                    modalWindow.style.top = '';
-                    modalWindow.style.width = '';
-                    modalWindow.style.height = '';
+                    
+                    setTimeout(() => {
+                        modalWindow.style.left = '';
+                        modalWindow.style.top = '';
+                        modalWindow.style.width = '';
+                        modalWindow.style.height = '';
+                    }, 500); // 500 milliseconds delay
                 }
             });
         }
@@ -352,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.cursor = '';
         }
 
-
         // attach listeners
         document.querySelectorAll('.modal-window-base .resize-handle').forEach(handle => {
             handle.addEventListener('pointerdown', onDown, {
@@ -416,69 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    const boat = document.querySelector('.boat');
-    let boatLeft = 10;
-    let isDragging = false;
-    let startX1;
-    let startBoatLeft;
-
-    // --- Helper function to get the correct clientX from mouse or touch event ---
-    function getClientX(e) {
-        return e.touches ? e.touches[0].clientX : e.clientX;
-    }
-
-    // --- Start Dragging (Mouse or Touch) ---
-    const startDrag = (e) => {
-        isDragging = true;
-        startX1 = getClientX(e);
-        startBoatLeft = boatLeft;
-        boat.style.cursor = 'grabbing';
-        e.preventDefault();
-    };
-
-    // --- End Dragging (Mouse or Touch) ---
-    const endDrag = () => {
-        isDragging = false;
-        boat.style.cursor = 'grab';
-    };
-
-    // --- Move Boat (Mouse or Touch) ---
-    const moveBoat = (e) => {
-        if (!isDragging) return;
-
-        const mouseDeltaX = getClientX(e) - startX1;
-        const newBoatLeft = startBoatLeft + (mouseDeltaX / window.innerWidth) * 100;
-
-        // Boundary checks
-        if (newBoatLeft >= 5 && newBoatLeft <= 60) {
-            boatLeft = newBoatLeft;
-            boat.style.left = `${boatLeft}vw`;
-        }
-    };
-
-    // --- Add all event listeners ---
-    window.addEventListener('keydown', (e) => {
-        if (e.keyCode === 37 && boatLeft > 5) { // left arrow
-            boatLeft = boatLeft - 5;
-            boat.style.left = `${boatLeft}vw`;
-        }
-
-        if (e.keyCode === 39 && boatLeft < 60) { // right arrow
-            boatLeft = boatLeft + 5;
-            boat.style.left = `${boatLeft}vw`;
-        }
-    });
-
-    // For Mouse
-    //boat.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', moveBoat);
-    document.addEventListener('mouseup', endDrag);
-
-    // For Touch
-    boat.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', moveBoat);
-    document.addEventListener('touchend', endDrag);
     
     // navbar animation
     document.addEventListener("DOMContentLoaded", () => {

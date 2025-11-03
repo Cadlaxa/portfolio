@@ -42,7 +42,7 @@ function loadEdits() {
             <blockquote class="instagram-media"
                         data-instgrm-permalink="${edit.link}"
                         data-instgrm-version="14"
-                        style="background:#ffa60000; margin:auto; width:10%; border-radius:3px; padding:30; box-shadow:none; max-width:540px; min-width:326px; ">
+                        ">
             </blockquote>
           </div>
           <div class="project-footer">

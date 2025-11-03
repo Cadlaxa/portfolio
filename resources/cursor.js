@@ -68,7 +68,7 @@ document.addEventListener("mouseover", (e) => {
   let hoveredImportantElement = false;
 
   // List of important tags and classes
-  const importantTags = ["A", "AUDIO", "BUTTON", "INPUT", "TEXTAREA"];
+  const importantTags = ["A", "AUDIO", "BUTTON", "INPUT", "TEXTAREA", "BLOCKQUOTE"];
   const importantClasses = [
     "palette",
     "cad-name",
