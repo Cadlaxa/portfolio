@@ -89,7 +89,7 @@ button.palette-btn i.switching {
 }
 
 .palette:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(360deg);
 }
 
 .palette:active {
@@ -120,11 +120,19 @@ button.palette-btn i.switching {
     background: #fc5656;
 }
 
+.palette[data-palette="hue-shift"] {
+    background-image: url('/resources/projects/rainbow.webp');
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
 @media (max-width: 600px) {
     .palette-options {
         position: fixed;
         bottom: 15px;
-        left: 20%;
+        left: 18%;
         transform: translateY(150%);
         display: flex;
         flex-direction: row;
