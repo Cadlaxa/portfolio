@@ -167,16 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!audioEnabled) {
                 try { saitoAudio?.pause(); } catch (e) {}
+                tryShowModalMessage('mute');
             }
             playSound(new Audio(clickToggle));
-            tryShowModalMessage('sound');
+            if (audioEnabled) {
+                tryShowModalMessage('sound');
+            }
             clicksIcon.classList.remove("switching");
         }, 800);
     });
 
     function updateIcon() {
         clicksIcon.className = audioEnabled
-            ? "fa-solid fa-volume-high"
+            ? "fa-solid fa-volume-high" 
             : "fa-solid fa-volume-xmark";
     }
 });

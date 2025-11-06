@@ -53,7 +53,14 @@
   "dark": [
     "oooh, dark theme 😍",
     "dark theme is much better in the eyes imo",
-    "oh, it's night time already??"
+    "oh, it's night time already??",
+    "🌙"
+  ],
+  "light": [
+    "oooh, that's kinda bright >.<",
+    "MY EEEYEEESSSS",
+    "some colors are pleasant in light theme",
+    "☀"
   ],
   "color": [
     "oooh, different accent color 😍",
@@ -62,9 +69,15 @@
     "this shade is kinda nice",
     "the contrast ratio of this is kinda umh.."
   ],
-  "sound": [
+  "mute": [
     "It's muted",
     "muted 🔈",
-    "the sound was gagged 🔈😲"
+    "the sound was gagged 🔈😲",
+    "was the sfx kinda annoying? 😔"
+  ],
+  "sound": [
+    "sound is back on!",
+    "sound check, sound check, it's on mate",
+    "🔊"
   ]
 }

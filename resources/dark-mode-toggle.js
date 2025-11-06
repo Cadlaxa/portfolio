@@ -22,7 +22,6 @@ function toggleDarkMode(newState, shouldPlaySound = true, updateCookie = true) {
             }
             if (updateCookie) setCookie("darkmode", "on", 9999);
             tryShowModalMessage('dark');
-
             currentMode = "on";
         } 
         else if (newState === "off" && currentMode !== "off") {
@@ -33,7 +32,7 @@ function toggleDarkMode(newState, shouldPlaySound = true, updateCookie = true) {
                 playSound(lightModeSound);
             }
             if (updateCookie) setCookie("darkmode", "off", 9999);
-
+            tryShowModalMessage('light');
             currentMode = "off";
         }
 

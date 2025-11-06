@@ -37,6 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Keyboard Navigation for Icons & Modals using HOVER effect
+    let currentIconIndex = 0;
+    const icons = Array.from(navIcons);
+
+    function applyHoverState(index) {
+        icons.forEach(i => i.classList.remove("hover"));
+        currentIconIndex = (index + icons.length) % icons.length;
+        icons[currentIconIndex].classList.add("hover");
+    }
+
+    // Ensure keyboard navigation starts visually on 1st icon
+    applyHoverState(0);
+
+    // Add tabindex (but no visible outline)
+    icons.forEach(icon => icon.setAttribute("tabindex", "-1"));
+
+    document.addEventListener("keydown", (e) => {
+        const active = activeModal;
+        // Modal open → ESC closes modal
+        if (e.key === "Escape") {
+            const closeBtn = active.querySelector(".close-btn, .nav-bar");
+            if (closeBtn) {
+                closeBtn.click();
+                applyHoverState(currentIconIndex);
+            }
+        }
+    });
+
     // --- General Setup ---
     function applyFloatAnimation() {
         if (window.innerWidth > 768) {
@@ -443,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth <= 600) {
             bannerText.innerHTML = `
                 <b class="cad-name">📢 Hey there!</b>
-                swipe up in the navbar to close the modal 📱
+                If you clicked in those icons above, swipe the navbar up to close 📱
             `;
         } else {
             bannerText.innerHTML = `
@@ -453,7 +481,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     updateBannerMessage();
-    banner.classList.add("show");
+    setTimeout(() => {
+        banner.classList.add("show");
+    }, 3000);
     window.addEventListener("resize", updateBannerMessage);
     closeBtn.addEventListener("click", () => {
         banner.classList.remove("show");
@@ -473,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return res.json();
         })
         .then(data => {
-            modalMessages = data;  // ✅ Save JSON into modalMessages!
+            modalMessages = data; 
             console.log("✅ Messages loaded:", modalMessages);
         })
         .catch(err => console.error("❌ JSON Load Error:", err));
@@ -491,14 +521,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const mobileBanner = document.getElementById("mobile-banner");
-        if (mobileBanner && mobileBanner.classList.contains("show")) {
-            mobileBanner.classList.remove("show");
-        }
-
         if (modalNotify.classList.contains("show")) {
             modalNotify.classList.remove("show");
             clearTimeout(notifyTimeout);
+        }
+
+        const mobileBanner = document.getElementById("mobile-banner");
+        if (mobileBanner && mobileBanner.classList.contains("show")) {
+            mobileBanner.classList.remove("show");
         }
 
         // 50/50 trigger

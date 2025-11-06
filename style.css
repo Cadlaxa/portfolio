@@ -720,12 +720,31 @@ body {
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.close-btn:hover {
+.close-btn-notif {
+  color: var(--orangeD);
+  font-size: 2em;
+  cursor: pointer;
+  line-height: 0;
+  padding: 0;
+  height: 1em; 
+  width: 1em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; 
+  border-color: transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.close-btn:hover,
+.close-btn-m:hover {
   transform: scale(1.2); 
   background-color: var(--orangeD); 
 }
 
-.close-btn:active {
+.close-btn:active,
+.close-btn-m:active {
   transform: var(--clicky);
 }
 
@@ -1495,15 +1514,6 @@ html {
   pointer-events: auto;
 }
 
-#mobile-banner button {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: inherit;
-  padding: 4px;
-}
-
 .modal-notify {
     position: fixed;
     bottom: -200px;
@@ -1533,16 +1543,6 @@ html {
     flex: 1;
     font-weight: 450;
 }
-
-#close-modal-notify {
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 4px;
-    flex-shrink: 0;
-}
-
 
 @media (max-width: 992px) {
 
