@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigator.vibrate([30])
     modal.classList.add('visible');
     document.body.style.overflow = 'hidden';
+    tryShowModalMessage('image-modal');
   };
 
   // Close the image modal

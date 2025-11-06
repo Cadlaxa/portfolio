@@ -21,6 +21,7 @@ function toggleDarkMode(newState, shouldPlaySound = true, updateCookie = true) {
                 playSound(darkModeSound);
             }
             if (updateCookie) setCookie("darkmode", "on", 9999);
+            tryShowModalMessage('dark');
 
             currentMode = "on";
         } 

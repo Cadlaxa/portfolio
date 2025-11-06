@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 try { saitoAudio?.pause(); } catch (e) {}
             }
             playSound(new Audio(clickToggle));
+            tryShowModalMessage('sound');
             clicksIcon.classList.remove("switching");
         }, 800);
     });

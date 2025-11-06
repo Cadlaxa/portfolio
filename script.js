@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 toggleModalBtn.style.display = 'block';
                 activeModal = targetModalContainer;
+                tryShowModalMessage(targetId);
             }
         });
     });
@@ -431,4 +432,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(triggerBounce, 4000);
     });
+
+    // banner text
+    const banner = document.getElementById("mobile-banner");
+    const closeBtn = document.getElementById("close-banner");
+    const bannerText = document.getElementById("banner-text");
+
+    // Dynamic text based on screen width
+    function updateBannerMessage() {
+        if (window.innerWidth <= 600) {
+            bannerText.innerHTML = `
+                <b class="cad-name">📢 Hey there!</b>
+                swipe up in the navbar to close the modal 📱
+            `;
+        } else {
+            bannerText.innerHTML = `
+                <b class="cad-name">😎 Oh HI!!!</b>
+                Welcome to my portfolio website lol
+            `;
+        }
+    }
+    updateBannerMessage();
+    banner.classList.add("show");
+    window.addEventListener("resize", updateBannerMessage);
+    closeBtn.addEventListener("click", () => {
+        banner.classList.remove("show");
+    });
+
+
+    // modal anotation
+    const modalNotify = document.getElementById("modal-notify");
+    let notifyTimeout = null;
+    let modalMessages = {};
+
+    console.log("📌 Notification script loaded");
+
+    fetch("resources/projects/messages.json")
+        .then(res => {
+            if (!res.ok) throw new Error("Message JSON missing!");
+            return res.json();
+        })
+        .then(data => {
+            modalMessages = data;  // ✅ Save JSON into modalMessages!
+            console.log("✅ Messages loaded:", modalMessages);
+        })
+        .catch(err => console.error("❌ JSON Load Error:", err));
+        
+    window.tryShowModalMessage = function (modalId) {
+        if (!modalId || typeof modalId !== "string") {
+            console.warn("❌ Invalid modal ID passed:", modalId);
+            return;
+        }
+        console.log("🎯 Modal opened:", modalId);
+
+        const messages = modalMessages[modalId];
+        if (!messages || !Array.isArray(messages) || messages.length === 0) {
+            console.warn(`⚠️ No messages found for modal: '${modalId}'`);
+            return;
+        }
+
+        const mobileBanner = document.getElementById("mobile-banner");
+        if (mobileBanner && mobileBanner.classList.contains("show")) {
+            mobileBanner.classList.remove("show");
+        }
+
+        if (modalNotify.classList.contains("show")) {
+            modalNotify.classList.remove("show");
+            clearTimeout(notifyTimeout);
+        }
+
+        // 50/50 trigger
+        if (Math.random() < 0.5) {
+            console.log("🎲 Notification skipped");
+            return;
+        }
+
+        const text = messages[Math.floor(Math.random() * messages.length)];
+        document.getElementById("modal-notify-text").innerHTML = text;
+        modalNotify.classList.add("show");
+        clearTimeout(notifyTimeout);
+        notifyTimeout = setTimeout(() => {
+            modalNotify.classList.remove("show");
+        }, 3500);
+    }
+
+    const modalNotifyClose = document.getElementById("close-modal-notify");
+    modalNotifyClose.addEventListener("click", () => {
+        modalNotify.classList.remove("show");
+    });
+
 });

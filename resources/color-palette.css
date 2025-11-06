@@ -121,7 +121,7 @@ button.palette-btn i.switching {
 }
 
 .palette[data-palette="hue-shift"] {
-    background-image: url('/resources/projects/rainbow.webp');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/OS_X_10.11_Beta_Beach_Ball.jpg');
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center center;

@@ -10,22 +10,22 @@ const sfxSelects = [
 // Palette variable sets
 const themes = {
     base: {
-        "--yellow": "#F5DA66",        // hsl(50, 95%, 65%)
-        "--orange": "#FF9A1F",        // hsl(38, 95%, 55%)
-        "--orangeL": "#F4C76C",       // hsl(45, 90%, 70%)
-        "--orangeL1": "#E6A44D",      // hsl(30, 85%, 65%)
-        "--orangeHL": "#F3EACB",      // hsl(60, 80%, 92%)
-        "--orangeD": "#CE6729",       // hsl(20, 90%, 45%)
-        "--ptext": "#5F3511",         // hsl(25, 70%, 20%)
-        "--light-gray": "#F7F5ED",    // hsl(40, 20%, 95%)
-        "--dark-gray": "#2B1D11",     // hsl(30, 30%, 15%)
-        "--icon-drop-shadow": "#C07B43", // hsl(28, 45%, 50%)
-        "--light-orange": "#FBF6E8",  // hsl(45, 85%, 97%)
-        "--light-orange1": "#FFF9F0", // hsl(55, 85%, 98%)
-        "--dark-orange": "#402513",   // hsl(18, 75%, 30%)
-        "--dark-orange1": "#A15524",  // hsl(25, 80%, 45%)
-        "--mobile-icon-item": "#F3EACBC0", // hsla(50, 85%, 92%, 0.75)
-        "--cursor": "#F3EACB50"      // hsla(50, 85%, 92%, 0.3)
+        "--yellow": "#F5DA66",        
+        "--orange": "#FF9A1F",        
+        "--orangeL": "#fff387",       
+        "--orangeL1": "#f5ba6c",      
+        "--orangeHL": "#ffecab",      
+        "--orangeD": "#CE6729",       
+        "--ptext": "#5F3511",         
+        "--light-gray": "#F7F5ED",    
+        "--dark-gray": "#2B1D11",     
+        "--icon-drop-shadow": "#C07B43", 
+        "--light-orange": "#FBF6E8",  
+        "--light-orange1": "#FFF9F0", 
+        "--dark-orange": "#402513",   
+        "--dark-orange1": "#A15524",  
+        "--mobile-icon-item": "#ffecabC0", 
+        "--cursor": "#ffecab50"      
     },
     orange: {
         "--yellow": "#ffef5b",
@@ -166,6 +166,7 @@ palettes.forEach(palette => {
         setTimeout(() => {
             paletteIcon.classList.remove("switching");
         }, 800);
+        tryShowModalMessage('color');
 
         const randomSFX = sfxSelects[Math.floor(Math.random() * sfxSelects.length)];
         playSound(randomSFX);

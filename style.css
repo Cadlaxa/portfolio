@@ -386,7 +386,23 @@ body {
   max-height: 60vh;
   padding: 50px 20px;
   text-align: center;
+  background-color: var(--light-orange);
+  opacity: 1;
+  background-image:  radial-gradient(var(--orangeL1) 0.9px, transparent 0.9px), radial-gradient(var(--orange) 0.9px, var(--light-orange) 0.9px);
+  background-size: 36px 36px;
+  background-position: 0 0,18px 18px;
+  /*animation: shiftPattern 8s linear infinite;*/
 }
+
+@keyframes shiftPattern {
+  from {
+    background-position: 0 0, 18px 18px;
+  }
+  to {
+    background-position: 36px 36px, 54px 54px;
+  }
+}
+
 
 /* Text and Headings */
 .intro-section h1 {
@@ -633,17 +649,6 @@ body {
   margin: 10px;
 }
 
-.social-links img {
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-  transition: filter 0.3s ease;
-}
-
-.social-links a:hover img {
-  filter: grayscale(0%);
-}
-
 .copyright {
   margin: 10px;
   color: var(--ptext);
@@ -773,7 +778,8 @@ body {
   transition: transform 0.3s ease, background-color 0.2s ease;
 }
 
-.profile-photo:hover {
+.profile-photo:hover,
+.profile-photo-banner:hover {
   transform: scale(1.15);
   transition: transform 0.3s ease background-color 0.2 ease;
   background-color: var(--orangeL);
@@ -782,6 +788,15 @@ body {
 .profile-photo:active {
   transform: translateY(5px);
   transform: scale(1.0);
+}
+
+.profile-photo-banner {
+  width: clamp(40px, 10vw, 40px);
+  height: clamp(40px, 10vw, 40px);
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--orange);
+  transition: transform 0.3s ease, background-color 0.2s ease;
 }
 
 .profile-name h1 {
@@ -1449,6 +1464,86 @@ html {
   transform: translateX(-50px);
 }
 
+#mobile-banner {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 420px;
+  padding: 10px;
+  background: var(--orangeHL);
+  color: var(--ptext);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 450;
+  z-index: 2000;
+  transition: bottom 0.45s cubic-bezier(.25, .85, .45, 1), opacity 0.35s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show banner */
+#mobile-banner.show {
+  bottom: 20px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#mobile-banner button {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+  padding: 4px;
+}
+
+.modal-notify {
+    position: fixed;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 450px;
+    background: var(--orangeHL);
+    color: var(--ptext);
+    border-radius: 15px;
+    padding: 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    z-index: 99999;
+    transition: bottom 0.4s ease;
+}
+
+.modal-notify.show {
+    bottom: 15px;
+}
+
+#modal-notify-text {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    flex: 1;
+    font-weight: 450;
+}
+
+#close-modal-notify {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+
 @media (max-width: 992px) {
 
   .project-grid-container {
@@ -1661,6 +1756,11 @@ html {
     max-height: 80vh;
     padding: 50px 20px;
     text-align: center;
+    background-color: transparent;
+    opacity: 1;
+    background-image:  radial-gradient(transparent 0.9px, transparent 0.9px), radial-gradient(transparent 0.9px, transparent 0.9px);
+    background-size: 36px 36px;
+    background-position: 0 0,18px 18px;
   }
 
   .modal-window {
