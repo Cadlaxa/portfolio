@@ -1,83 +1,158 @@
 {
   "about-modal": [
-    "Did you know? Paolo codes in pure caffeine ☕",
-    "Explore more about me in this section!",
-    "Tip: You can change the theme color of this site",
-    "You’re now looking at the About Section 👀",
-    "Thanks for checking out my profile ✨"
+    "Did you know? Cadlaxa codes on pure caffeine ☕",
+    "Feel free to explore and get to know me better!",
+    "Tip: You can change the theme color of this site!",
+    "You're now viewing the About section 👀",
+    "Thanks for checking out my profile ✨",
+    "This is where the lore begins...",
+    "Yes!! (in Lara's voice) .",
+    "Welcome aboard! Enjoy the scroll 😎",
+    "Still here? That's commitment",
+    "hmmm....inch resting 🤔"
   ],
   "links-modal": [
-    "Wanna contact me or something?",
-    "Most of my links are here incase of contacting me",
-    "Reddit.....",
-    "Email me at my personal email or drop a message in the contacts 📧",
-    "Thanks for checking out "
+    "My social links live here 👋",
+    "Looking for my contacts? You're in the right place!",
+    "Most of the places I exist online are listed here",
+    "Email me anytime — I don't bite lol 📧",
+    "Thanks for checking out this section!",
+    "Reddit…",
+    "Click responsibly!",
+    "Contact me on my personal email 📬",
+    "I swear these links are safe...",
+    "Follow me or just stalk quietly, I won't mind"
   ],
   "project-modal": [
     "These projects were handcrafted with love 💻",
-    "Click on the Video edits tab to see the other stuffs",
-    "Future updates incoming 👀",
-    "Most of my projects here are Vocal Synth related",
-    "Tip: You can change the theme color of this site"
+    "Curious? Check out the Video Edits tab too!",
+    "Many of my projects are Vocal Synth related 🎤",
+    "Future updates are definitely coming 👀",
+    "Feel free to explore each project at your own pace",
+    "Lots of nerdy things ahead!",
+    "Some are simple… some are chaos",
+    "flop products",
+    "I hope you find something cool here 😎",
+    "These projects are all stored in a JSON file so this site loads them"
   ],
   "image-modal": [
-    "That's an image lol",
-    "You discovered that you can click this image banner yay!!",
-    "hmmm....I see",
-    "You noticed that some of my projects doesn't have images...",
-    "oooh ✨✨"
+    "Yep, that's an image alright 📸",
+    "You figured out you can click the banner — nice!",
+    "hmmm… interesting",
+    "Some projects don't have images yet… oops",
+    "✨ Sparkly visual stuff! ✨",
+    "Picture says 1000 words — this one says 3",
+    "You like clicking things don't you?",
+    "Behold! High-resolution pixels",
+    "Who needs text when we have pictures?",
+    "yup that image is a webp lol"
   ],
   "faq-modal": [
     "Cadlaxa who??",
-    "They're just few for now, they will grow soon",
-    "I always asked about that name pronunciation lmao",
-    "yes....I also looking at you",
-    "idk how I got these faq questions lol"
+    "Only a few FAQs for now — more soon!",
+    "Yes, they always ask about name pronunciation 😂",
+    "Yes… I'm also looking at you 👀",
+    "I honestly don't know how I got these FAQs",
+    "If you're confused, so am I",
+    "Ask me anything… but like, nicely",
+    "These answers are 90% improvisation",
+    "Curiosity is welcome here!",
+    "More questions = more content 😌"
   ],
   "contact-modal": [
-    "Don’t be shy — drop a message!",
-    "Just drop me a message 🥰",
-    "HIII"
+    "Don't be shy — drop a message!",
+    "Say hi!",
+    "I promise I'll reply (eventually lol)",
+    "Your message goes straight to my personal email",
+    "Talk to me, I'm very friendly! (depending on the person)",
+    "Small talk or deep talk? Either works",
+    "Go ahead — type something!",
+    "I read everything. Even typos.",
+    "Sending a message makes you cooler 😎",
+    "I appreciate you reaching out!"
   ],
   "submit-modal": [
-    "Thanks for sending a message, I'll read this later!",
-    "Thanks for reaching out",
-    "I saw that lol 👀",
-    "I'll check my emails later, thanks"
+    "Thanks for the message! I'll read it soon!",
+    "Appreciate the effort — thank you! ✨",
+    "Message received loud and clear 👀",
+    "I'll check my email later — thanks!",
+    "You did great, 5 star ⭐⭐⭐⭐⭐",
+    "That definitely made my notifications happier",
+    "Sent! Time to celebrate 🎉",
+    "I'll reply after my 27th tea ☕",
+    "Thanks for reaching out — seriously!",
+    "Good vibes successfully delivered!"
   ],
   "error-modal": [
-    "Oh NOOO, the message didn't send 😞",
-    "oops",
-    "oh, that's unexpected lol"
+    "Oh no… something went wrong 😞",
+    "Oops! That wasn't supposed to happen",
+    "Well… that's unexpected 😅",
+    "Please try again — we believe in you!",
+    "The internet gods said 'no'",
+    "Something broke… not pointing fingers",
+    "It failed. But you didn't.",
+    "Tech struggles are real 😔",
+    "Let's pretend that didn't happen 👀",
+    "Retry time! You got this 💪"
   ],
   "dark": [
-    "oooh, dark theme 😍",
-    "dark theme is much better in the eyes imo",
-    "oh, it's night time already??",
-    "🌙"
+    "Dark mode supremacy 😍",
+    "My eyes feel safer already 🌙",
+    "It's getting cozy in here",
+    "Night mode activated!",
+    "Welcome to the cool side 😎",
+    "Ah yes, darkness… my old friend",
+    "This theme is a vibe",
+    "Much aesthetic. Very wow.",
+    "Sleek, stylish, elegant ✨",
+    "Dark mode lovers unite!"
   ],
   "light": [
-    "oooh, that's kinda bright >.<",
-    "MY EEEYEEESSSS",
-    "some colors are pleasant in light theme",
-    "☀"
+    "Oooh, things just got brighter ☀️",
+    "MY EYES— wait, no, it's fine",
+    "Some colors shine better in light mode!",
+    "✨ Sunlight mode engaged",
+    "Bright and refreshing!",
+    "Hello day mode!",
+    "Oh hey, I can see everything now!",
+    "Sometimes light is right",
+    "This looks pretty clean 👌",
+    "Shiny and delightful!"
   ],
   "color": [
-    "oooh, different accent color 😍",
-    "nice, you've discovered the pallete theming",
-    "if you clicked that rainbow button, it randomizes the hues",
-    "this shade is kinda nice",
-    "the contrast ratio of this is kinda umh.."
+    "New accent color unlocked 🎨",
+    "Loving that color choice!",
+    "Yes! The rainbow button randomizes hues 🌈",
+    "This shade actually looks nice",
+    "Customization for the win!",
+    "You've got great taste in colors 😉",
+    "New look, new vibe",
+    "Vibrant and stylish ✨",
+    "Color energy upgraded",
+    "That hue slaps"
   ],
   "mute": [
-    "It's muted",
-    "muted 🔈",
-    "the sound was gagged 🔈😲",
-    "was the sfx kinda annoying? 😔"
+    "Muted 🔇",
+    "Silence is golden… I guess?",
+    "Shhh… sound took a break",
+    "No more sfx chaos",
+    "Volume: yeeted",
+    "The audio ninjas are hiding",
+    "Peace and quiet activated",
+    "Sound gagged 🔈😲",
+    "Your ears can rest now",
+    "Silent mode vibes"
   ],
   "sound": [
-    "sound is back on!",
-    "sound check, sound check, it's on mate",
-    "🔊"
+    "Sound is back! 🔊",
+    "Mic check, audio's alive!",
+    "Noise restored",
+    "Ah yes, music to my ears 🎶",
+    "Volume unlocked!",
+    "Let the sounds flow",
+    "Audio has re-entered the chat",
+    "Sound check ✔️",
+    "Make some noise (or don't)",
+    "Welcome back, sound!"
   ]
 }
