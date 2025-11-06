@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth <= 600) {
             bannerText.innerHTML = `
                 <b class="cad-name">📢 Hey there!</b>
-                If you clicked in those icons above, swipe the navbar up to close 📱
+                If you clicked those icons above, swipe the navbar up to close them 📱
             `;
         } else {
             bannerText.innerHTML = `
@@ -531,8 +531,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileBanner.classList.remove("show");
         }
 
-        // 50/50 trigger
-        if (Math.random() < 0.5) {
+        // 55% trigger
+        if (Math.random() < 0.55) {
             console.log("🎲 Notification skipped");
             return;
         }
