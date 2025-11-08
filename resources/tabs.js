@@ -80,6 +80,7 @@ tabButtons.forEach(btn => {
 
     sections.forEach(sec => sec.classList.remove("active"));
     document.getElementById(target).classList.add("active");
+    navigator.vibrate([30])
 
     loadTab(target);
   });

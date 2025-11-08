@@ -420,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const faqItem = question.parentElement;
                 const faqAnswer = faqItem.querySelector('.faq-answer');
                 faqItem.classList.toggle('open');
+                tryShowModalMessage('faq-modal');
                 navigator.vibrate([20])
             });
         });
@@ -483,9 +484,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBannerMessage();
     setTimeout(() => {
         banner.classList.add("show");
-    }, 3000);
+    }, 4000);
     window.addEventListener("resize", updateBannerMessage);
     closeBtn.addEventListener("click", () => {
+        navigator.vibrate([30])
         banner.classList.remove("show");
     });
 
@@ -548,6 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalNotifyClose = document.getElementById("close-modal-notify");
     modalNotifyClose.addEventListener("click", () => {
+        navigator.vibrate([30])
         modalNotify.classList.remove("show");
     });
 

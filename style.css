@@ -391,6 +391,7 @@ body {
   background-image:  radial-gradient(var(--orangeL1) 0.9px, transparent 0.9px), radial-gradient(var(--orange) 0.9px, var(--light-orange) 0.9px);
   background-size: 36px 36px;
   background-position: 0 0,18px 18px;
+  overflow-y: auto;
   /*animation: shiftPattern 8s linear infinite;*/
 }
 
@@ -649,11 +650,19 @@ body {
   margin: 10px;
 }
 
+.social-links:hover {
+  background-color: var(--orangeL);;
+}
+
 .copyright {
   margin: 10px;
   color: var(--ptext);
   font-size: 0.9em;
   font-weight: 600;
+}
+
+.social-links:hover .copyright {
+  color: var(--orangeD);
 }
 
 /* Modal Styling */
@@ -1603,6 +1612,15 @@ html {
     align-items: center;
     margin-bottom: 20%;
   }
+
+  .social-links:hover {
+    background-color: transparent;
+  }
+
+  .social-links:hover .copyright {
+    color: var(--ptext);
+  }
+
 
   .link-grid-container {
     display: grid;
