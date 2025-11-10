@@ -1,6 +1,8 @@
 const paletteBtn = document.querySelector('.palette-btn');
 const paletteOptions = document.querySelector('.palette-options');
 const palettes = document.querySelectorAll('.palette');
+const hueSlider = document.getElementById("hue-slider");
+let hideTimeout;
 
 const sfxSelects = [
     new Audio('resources/sfx/color.mp3'),
@@ -10,22 +12,22 @@ const sfxSelects = [
 // Palette variable sets
 const themes = {
     base: {
-        "--yellow": "#F5DA66",        
-        "--orange": "#FF9A1F",        
-        "--orangeL": "#fff387",       
-        "--orangeL1": "#f5ba6c",      
-        "--orangeHL": "#ffecab",      
-        "--orangeD": "#CE6729",       
-        "--ptext": "#5F3511",         
-        "--light-gray": "#F7F5ED",    
-        "--dark-gray": "#2B1D11",     
-        "--icon-drop-shadow": "#C07B43", 
-        "--light-orange": "#FBF6E8",  
-        "--light-orange1": "#FFF9F0", 
-        "--dark-orange": "#402513",   
-        "--dark-orange1": "#A15524",  
-        "--mobile-icon-item": "#ffecabC0", 
-        "--cursor": "#ffecab50"      
+        "--yellow": "#ffd6a5",
+        "--orange": "#fc3126",
+        "--orangeL": "#fc5c53",
+        "--orangeL1": "#fa857d",
+        "--orangeHL": "#f5bdb3",
+        "--orangeD": "#b91c1c",
+        "--ptext": "#3a0d0d",
+        "--light-gray": "#fff2f1",
+        "--dark-gray": "#2a0505",
+        "--icon-drop-shadow": "#cc3c35",
+        "--light-orange": "#ffe4e1",
+        "--light-orange1": "#ffecec",
+        "--dark-orange": "#7f0e0e",
+        "--dark-orange1": "#a71a1a",
+        "--mobile-icon-item": "#ffbcb880",
+        "--cursor": "#fa857d50"
     },
     orange: {
         "--yellow": "#ffef5b",
@@ -138,9 +140,34 @@ const themes = {
     }
 };
 
+function getThemeHue(theme) {
+    const primary = theme["--orange"] ;
+    const { h } = hexToHSL(primary);
+    return h;
+}
+
 // Toggle palette menu
 paletteBtn.addEventListener('click', () => {
     paletteOptions.classList.toggle('show');
+    resetHideTimer();
+});
+
+function hidePalette() {
+    paletteOptions.classList.remove('show');
+}
+
+function resetHideTimer() {
+  clearTimeout(hideTimeout);
+  hideTimeout = setTimeout(() => {
+    hidePalette();
+  }, 3000); // 3 seconds
+}
+
+['mousemove', 'click'].forEach(event => {
+    paletteOptions.addEventListener(event, resetHideTimer);
+});
+['mousemove', 'click'].forEach(event => {
+    hueSlider.addEventListener(event, resetHideTimer);
 });
 
 // Apply palette + save to cookies
@@ -177,11 +204,19 @@ palettes.forEach(palette => {
 
 
 // Load theme from cookies on startup
-window.addEventListener('load', () => {
-    const saved = document.cookie.split('; ').find(row => row.startsWith('theme='));
-    if (saved) {
-        const theme = saved.split('=')[1];
+window.addEventListener("load", () => {
+    const theme = document.cookie.split('; ').find(r => r.startsWith("theme="))?.split("=")[1];
+    const savedHue = parseInt(document.cookie.split('; ').find(r => r.startsWith("hueShift="))?.split("=")[1]);
+
+    if (!theme) return;
+
+    if (theme === "hue-shift") {
+        hueSlider.value = savedHue;
+        applyHueShiftTheme(savedHue);
+    } else {
         applyTheme(theme);
+        const themeHue = getThemeHue(themes[theme]);
+        hueSlider.value = themeHue;
     }
 });
 
@@ -190,19 +225,23 @@ function applyTheme(name) {
     if (name === "hue-shift") {
         let hueValue = parseInt(
             document.cookie.split("; ")
-                .find(r => r.startsWith("hueShift="))
-                ?.split("=")[1] ?? Math.floor(Math.random() * 360)
+            .find(r => r.startsWith("hueShift="))
+            ?.split("=")[1] ?? 0
         );
+        hueSlider.value = hueValue;
         applyHueShiftTheme(hueValue);
         return;
     }
 
-
-    // Normal theme mode
     const themeVars = themes[name];
     for (let key in themeVars) {
         document.documentElement.style.setProperty(key, themeVars[key]);
     }
+
+    const themeHue = getThemeHue(themeVars);
+    hueSlider.value = themeHue;
+
+    document.cookie = `hueShift=${themeHue}; path=/; max-age=31536000`;
 }
 
 function applyHueShiftTheme(deg) {
@@ -212,7 +251,26 @@ function applyHueShiftTheme(deg) {
         const shifted = hueShiftColor(base[key], deg);
         document.documentElement.style.setProperty(key, shifted);
     }
+
+    // Save hue value and update slider + cookies
+    document.documentElement.style.setProperty("--hue-value", deg);
+    
+    localStorage.setItem("savedHue", deg);
+    document.cookie = `hueShift=${deg}; path=/; max-age=31536000`;
+
+    // Sync slider if visible
+    if (hueSlider) hueSlider.value = deg;
 }
+
+hueSlider.addEventListener("input", (e) => {
+    const hue = parseInt(e.target.value);
+
+    // Force theme into hue-shift mode
+    document.cookie = `theme=hue-shift; path=/; max-age=31536000`;
+
+    applyHueShiftTheme(hue);
+});
+
 
 /* Convert hex → HSL → shift Hue → back to hex */
 function shiftHue(deg) {
@@ -228,59 +286,76 @@ function shiftHue(deg) {
 }
 
 function hueShiftColor(hex, deg) {
-    let { h, s, l } = hexToHSL(hex);
+    let { h, s, l, a } = hexToHSL(hex);
 
     h = (h + deg) % 360;
 
     // saturation & brightness
-    s = Math.min(90, s * 0.6);
+    s = Math.min(100, s * 0.6);
     l = Math.min(100, Math.max(10, l)); 
 
-    return HSLToHex(h, s, l);
+    return HSLToHex(h, s, l, a);
 }
 
 function hexToHSL(H) {
-    let r = 0, g = 0, b = 0;
-    if (H.length == 4) {
-        r = "0x" + H[1] + H[1];
-        g = "0x" + H[2] + H[2];
-        b = "0x" + H[3] + H[3];
-    } else {
-        r = "0x" + H[1] + H[2];
-        g = "0x" + H[3] + H[4];
-        b = "0x" + H[5] + H[6];
+    let r = 0, g = 0, b = 0, a = 1;
+
+    // 4-digit hex (#RGBA)
+    if (H.length === 5) {
+        r = parseInt(H[1] + H[1], 16);
+        g = parseInt(H[2] + H[2], 16);
+        b = parseInt(H[3] + H[3], 16);
+        a = parseInt(H[4] + H[4], 16) / 255;
+    } 
+    // 8-digit hex (#RRGGBBAA)
+    else if (H.length === 9) {
+        r = parseInt(H[1] + H[2], 16);
+        g = parseInt(H[3] + H[4], 16);
+        b = parseInt(H[5] + H[6], 16);
+        a = parseInt(H[7] + H[8], 16) / 255;
+    } 
+    // 3-digit hex (#RGB)
+    else if (H.length === 4) {
+        r = parseInt(H[1] + H[1], 16);
+        g = parseInt(H[2] + H[2], 16);
+        b = parseInt(H[3] + H[3], 16);
+    } 
+    // 6-digit hex (#RRGGBB)
+    else {
+        r = parseInt(H[1] + H[2], 16);
+        g = parseInt(H[3] + H[4], 16);
+        b = parseInt(H[5] + H[6], 16);
     }
 
     r /= 255; g /= 255; b /= 255;
+
     let cmin = Math.min(r, g, b),
         cmax = Math.max(r, g, b),
         delta = cmax - cmin;
 
-    let h = 0, s = 0, l = 0;
+    let h = 0, s = 0, l = (cmax + cmin) / 2;
 
     if (delta !== 0) {
-        if (cmax == r) h = ((g - b) / delta) % 6;
-        else if (cmax == g) h = (b - r) / delta + 2;
+        if (cmax === r) h = ((g - b) / delta) % 6;
+        else if (cmax === g) h = (b - r) / delta + 2;
         else h = (r - g) / delta + 4;
         h = Math.round(h * 60);
         if (h < 0) h += 360;
+        s = delta / (1 - Math.abs(2 * l - 1));
     }
 
-    l = (cmax + cmin) / 2;
-    s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     s = +(s * 100).toFixed(1);
     l = +(l * 100).toFixed(1);
 
-    return { h, s, l };
+    return { h, s, l, a };
 }
 
-function HSLToHex(h, s, l) {
+function HSLToHex(h, s, l, a = 1) {
     s /= 100; l /= 100;
     const k = n => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = n =>
-        l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-    const toHex = x =>
-        `0${Math.round(x * 255).toString(16)}`.slice(-2).toUpperCase();
-    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+    const a1 = s * Math.min(l, 1 - l);
+    const f = n => l - a1 * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    const toHex = x => `0${Math.round(x * 255).toString(16)}`.slice(-2).toUpperCase();
+    const alphaHex = `0${Math.round(a * 255).toString(16)}`.slice(-2).toUpperCase();
+    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}${alphaHex}`;
 }
