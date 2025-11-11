@@ -163,10 +163,10 @@ function resetHideTimer() {
   }, 3000); // 3 seconds
 }
 
-['mousemove', 'click'].forEach(event => {
+['mousemove', 'click', 'touchstart', 'touchmove'].forEach(event => {
     paletteOptions.addEventListener(event, resetHideTimer);
 });
-['mousemove', 'click'].forEach(event => {
+['mousemove', 'click', 'touchstart', 'touchmove'].forEach(event => {
     hueSlider.addEventListener(event, resetHideTimer);
 });
 
