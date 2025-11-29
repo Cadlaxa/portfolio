@@ -99,7 +99,7 @@
     "buttonText": "View Source"
   },
   {
-    "title": "Brailleduino",
+    "title": "Braillify (Formerly Brailleduino)",
     "description": "Braille to Text device for deciphering braille system to readable text format",
     "link": "https://github.com/Cadlaxa/Brailleduino",
     "buttonText": "View Source"
